@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
@@ -14,11 +14,74 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-model User{
-  id String @id @default(uuid())
-  email String @unique
-  password String?
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String?
   profilePic String?
-  createdAt DateTime @default(now())
+  createdAt  DateTime @default(now())
+}
+
+model Movie {
+  id               Int       @id
+  title            String
+  originalTitle    String    @map("original_title")
+  overview         String?
+  posterPath       String?   @map("poster_path")
+  backdropPath     String?   @map("backdrop_path")
+  originalLanguage String    @map("original_language")
+  releaseDate      DateTime? @map("release_date")
+  popularity       Float
+  voteAverage      Float     @map("vote_average")
+  voteCount        Int       @map("vote_count")
+  adult            Boolean
+  video            Boolean
+  genreIds         Json? // store genre array [16, 12, 10751, 35]
+  mediaType        String?   @map("media_type")
+
+  // relation field
+  cast          MovieCast[]
+  searchHistory SearchHistory[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model Person {
+  id                 Int       @id // TMDB person ID
+  adult              Boolean
+  alsoKnownAs        Json?     @map("also_known_as")
+  biography          String?
+  birthday           DateTime?
+  deathday           DateTime?
+  gender             Int
+  homepage           String?
+  imdbId             String?   @unique @map("imdb_id")
+  knownForDepartment String?   @map("known_for_department")
+  name               String
+  placeOfBirth       String?   @map("place_of_birth")
+  popularity         Float
+  profilePath        String?   @map("profile_path")
+
+  // relation field
+  movies        MovieCast[]
+  searchHistory SearchHistory[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model MovieCast {
+  id       Int     @id @default(autoincrement())
+  movie    Movie   @relation(fields: [movieId], references: [id])
+  movieId  Int
+  person   Person  @relation(fields: [personId], references: [id])
+  personId Int
+  role     String? // e.g. "Woody" or "Director"
+}
+
+model SearchHistory {
+  id       String  @id @default(uuid())
+  movie    Movie?  @relation(fields: [movieId], references: [id])
+  movieId  Int?
+  person   Person? @relation(fields: [personId], references: [id])
+  personId Int?
 }
