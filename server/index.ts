@@ -25,7 +25,7 @@ dotenv.config();
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID!,
     clientSecret: process.env.CLIENT_SECRET!,
-    callbackURL: `${process.env.SERVER_URL}/api/user/v2/login/callback`,
+    callbackURL: `${process.env.SERVER_URL}/api/auth/v2/login/callback`,
 }, async (accessToken, refreshToken, profile, done) => {
     
     const email = profile.emails?.[0]?.value
