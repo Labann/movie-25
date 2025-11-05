@@ -2,6 +2,7 @@ import * as express from "express";
 import prisma from "../utils/prisma.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { checkUser } from "../utils/checkUser.js";
 export const sign_up = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -63,10 +64,43 @@ export const login = async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true, //prevents access from js
             maxAge: 24 * 15 * 60 * 60 * 1000, //expire time
-            secure: true, //allows it to be accessed over https only
+            secure: process.env.NODE_ENV === "development", //allows it to be accessed over https only
             sameSite: "strict" //prevents against CRSF attacks
         });
         return res.status(200).json(user);
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: error.message
+        });
+    }
+};
+export const logout = async (req, res) => {
+    try {
+        res.cookie("token", "", {
+            maxAge: 0,
+            httpOnly: true, //prevents access from js
+            secure: process.env.NODE_ENV === "development", //allows it to be accessed over https only
+            sameSite: "strict"
+        });
+        return res.status(200).json({
+            message: "logged out successfully"
+        });
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: error.message
+        });
+    }
+};
+export const redirectForGoogleAuth = async (req, res) => {
+    try {
+        const user = req.user;
+        checkUser(user);
+        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: "15d" });
+        res.redirect(`${process.env.CLIENT_URL}?token=${token}`);
     }
     catch (error) {
         console.error(error);

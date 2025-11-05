@@ -1,8 +1,10 @@
 import * as express from "express";
 import prisma from "../utils/prisma.js";
-import type { User } from "../generated/prisma/client.js";
+
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"
+import type { User } from "@prisma/client";
+import { checkUser } from "../utils/checkUser.js";
 
 
 export const sign_up: express.RequestHandler = async (req, res) => {
@@ -21,6 +23,8 @@ export const sign_up: express.RequestHandler = async (req, res) => {
         if(user) return res.status(400).json({
             error: "user already exists"
         })
+
+        
 
         const salt = await bcrypt.genSalt(10);
         const passwordHashed = await bcrypt.hash(password, salt);
@@ -69,12 +73,48 @@ export const login: express.RequestHandler = async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true, //prevents access from js
             maxAge: 24 * 15 * 60 * 60 * 1000, //expire time
-            secure: true, //allows it to be accessed over https only
+            secure: process.env.NODE_ENV === "development", //allows it to be accessed over https only
             sameSite: "strict" //prevents against CRSF attacks
         });
 
         return res.status(200).json(user);
     }catch(error){
+        console.error(error);
+        return res.status(500).json({
+            error: (error as Error).message
+        })
+    }
+}
+
+export const logout: express.RequestHandler = async (req, res) => {
+    try {
+        res.cookie("token", "", {
+            maxAge: 0,
+            httpOnly: true, //prevents access from js
+            secure: process.env.NODE_ENV === "development", //allows it to be accessed over https only
+            sameSite: "strict"
+        })
+
+        return res.status(200).json({
+            message: "logged out successfully"
+        })
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: (error as Error).message
+        })
+    }
+}
+
+
+export const redirectForGoogleAuth: express.RequestHandler = async (req, res) => {
+    try {
+        const user = req.user as User
+        checkUser(user);
+        const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET!, {expiresIn: "15d"});
+
+        res.redirect(`${process.env.CLIENT_URL!}?token=${token}`);
+    } catch (error) {
         console.error(error);
         return res.status(500).json({
             error: (error as Error).message
