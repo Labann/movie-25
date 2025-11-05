@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev": "nodemon index.ts",
+    "dev": "tsx watch index.ts",
     "start": "node dist/index.js"
   },
   "keywords": [],
@@ -14,22 +14,34 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^6.18.0",
     "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.1",
-    "nodemon": "^3.1.10"
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.10",
+    "passport": "^0.7.0",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.5",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
+    "@types/multer": "^2.0.0",
     "@types/nodemon": "^1.19.6",
-    "tsc": "^2.0.4"
+    "@types/passport": "^1.0.17",
+    "@types/passport-google-oauth20": "^2.0.17",
+    "passport-google-oauth20": "^2.0.0",
+    "prisma": "^6.18.0",
+    "tsc": "^2.0.4",
+    "tsx": "^4.20.6"
   }
 }
