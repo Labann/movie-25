@@ -21,7 +21,7 @@ app.use(express.json({limit: "30mb"}));
 
 dotenv.config();
 
-/*
+
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID!,
     clientSecret: process.env.CLIENT_SECRET!,
@@ -54,7 +54,7 @@ passport.use(new GoogleStrategy({
     done(null, user);
 }
 ))
-*/
+
 const port = process.env.PORT || 3030
 
 app.use("/api/auth", authRoutes);
