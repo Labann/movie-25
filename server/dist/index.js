@@ -8,7 +8,10 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import prisma from "./utils/prisma.js";
 import cookieParser from "cookie-parser";
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: [`${process.env.CLIENT_URL}`, "http://localhost:3000"],
+    credentials: true
+}));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true, limit: "30mb" }));
 app.use(express.json({ limit: "30mb" }));
