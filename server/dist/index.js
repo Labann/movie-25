@@ -9,6 +9,7 @@ import prisma from "./utils/prisma.js";
 import cookieParser from "cookie-parser";
 import movieRoute from "./routes/movie.js";
 import discoverRoute from "./routes/discover.js";
+import userRoutes from "./routes/user.js";
 const app = express();
 app.use(cors({
     origin: [`${process.env.CLIENT_URL}`, "http://localhost:3000"],
@@ -47,6 +48,7 @@ passport.use(new GoogleStrategy({
 }));
 const port = process.env.PORT || 3030;
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/movie", movieRoute);
 app.use("/api/discover", discoverRoute);
 app.listen(port, () => console.log(`app running on port: ${port}`));
