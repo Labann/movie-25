@@ -1,3 +1,3 @@
 export {};
-//assets
+//asset
 //# sourceMappingURL=index.js.map
