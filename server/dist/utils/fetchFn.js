@@ -8,9 +8,10 @@ export default async function fetchFn(url) {
             }
         });
         const data = await res.json();
-        if (res.status === 200) {
-            return data;
+        if (data.status_message) {
+            throw Error(data.status_message);
         }
+        return data;
     }
     catch (error) {
         throw error.message;
