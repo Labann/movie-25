@@ -20,7 +20,12 @@ export const uploadToCloudinary = (
 ):Promise<UploadApiResponse> => {
     return new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream(
-            options,
+            {
+                resource_type: "image",          // ✅ REQUIRED for buffer uploads
+                folder: options?.folder || "uploads",
+                filename_override: `img_${Date.now()}`,  
+                use_filename: true,
+            },
             (err, result) => {
                 if(err) return reject(err);
                 resolve(result as UploadApiResponse)
