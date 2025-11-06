@@ -17,7 +17,8 @@ app.use(cors({
 }))
 
 app.use(cookieParser());
-
+app.use(express.urlencoded({extended: true, limit: "30mb"}));
+app.use(express.json({limit: "30mb"}));
 
 dotenv.config();
 
@@ -61,9 +62,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/movie", movieRoute);
 app.use("/api/discover", discoverRoute);
-
-app.use(express.urlencoded({extended: true, limit: "30mb"}));
-app.use(express.json({limit: "30mb"}));
 app.listen(port, () => console.log(`app running on port: ${port}`));
 app.get("/", (req, res) => {
     res.send(`app running on port ${port}`);
