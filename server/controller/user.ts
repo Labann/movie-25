@@ -53,6 +53,7 @@ export const updateProfile: express.RequestHandler = async (req, res) => {
             profilePic = await uploadToCloudinary(file.buffer, {folder: "profile_pic"})
         }
 
+        console.log(profilePic);
         const updatedUser = await prisma.user.update({
             where: {
                 email: user.email
