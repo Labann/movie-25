@@ -1,15 +1,13 @@
 import * as express from "express";
-import multer, {} from "multer";
-import {} from "express";
-const storage = multer.memoryStorage();
-const fileFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith("image/")) {
-        cb(null, true); //accept file
+import multer from "multer";
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "public/assets");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
     }
-    else {
-        cb(null, false);
-    }
-};
-const upload = multer({ storage, fileFilter });
+});
+const upload = multer({ storage });
 export default upload;
 //# sourceMappingURL=upload.js.map

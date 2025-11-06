@@ -50,7 +50,7 @@ export const updateProfile: express.RequestHandler = async (req, res) => {
         
         
         if(file){
-            profilePic = await uploadToCloudinary(file.buffer, {folder: "profile_pic"})
+            profilePic = req.file?.path;
         }
 
         
@@ -60,7 +60,7 @@ export const updateProfile: express.RequestHandler = async (req, res) => {
             },
             data: {
                 email: email ?? user.email,
-                profilePic: profilePic?.secure_url ?? user.profilePic
+                profilePic: profilePic?? user.profilePic
             }
         })
 

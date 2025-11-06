@@ -1,18 +1,17 @@
 import * as express from "express";
-import multer, {type FileFilterCallback} from "multer"
-import { type Request } from "express";
+import multer from "multer"
 
 
-const storage = multer.memoryStorage();
 
-const fileFilter =  (req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
-    if(file.mimetype.startsWith("image/")){
-        cb(null, true) //accept file
-    } else {
-        cb(null, false);
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "public/assets");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
     }
-}
+})
 
-const upload = multer({storage, fileFilter})
+const upload = multer({storage});
 
 export default upload;

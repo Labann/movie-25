@@ -39,7 +39,7 @@ export const updateProfile = async (req, res) => {
         const user = req.user;
         checkUser(user);
         if (file) {
-            profilePic = await uploadToCloudinary(file.buffer, { folder: "profile_pic" });
+            profilePic = req.file?.path;
         }
         const updatedUser = await prisma.user.update({
             where: {
@@ -47,7 +47,7 @@ export const updateProfile = async (req, res) => {
             },
             data: {
                 email: email ?? user.email,
-                profilePic: profilePic?.secure_url ?? user.profilePic
+                profilePic: profilePic ?? user.profilePic
             }
         });
         return res.status(200).json(updatedUser);
