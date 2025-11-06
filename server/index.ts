@@ -25,9 +25,9 @@ app.use(express.json({limit: "30mb"}));
 
 
 const __filename = fileURLToPath(import.meta.url);
-const __direname = path.dirname(__filename);
+const __dirname = path.dirname(__filename);
 
-app.use("/public/assets",express.static(path.join(__direname, "public/assets")));
+app.use("/assets",express.static(path.join(__dirname, "public/assets")));
 
 dotenv.config();
 

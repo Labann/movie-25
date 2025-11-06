@@ -20,8 +20,8 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true, limit: "30mb" }));
 app.use(express.json({ limit: "30mb" }));
 const __filename = fileURLToPath(import.meta.url);
-const __direname = path.dirname(__filename);
-app.use("/public/assets", express.static(path.join(__direname, "public/assets")));
+const __dirname = path.dirname(__filename);
+app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 dotenv.config();
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
