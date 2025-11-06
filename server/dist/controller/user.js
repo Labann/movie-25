@@ -38,6 +38,7 @@ export const updateProfile = async (req, res) => {
     try {
         const user = req.user;
         checkUser(user);
+        console.log(file);
         if (file) {
             profilePic = await uploadToCloudinary(file.buffer, { folder: "profile_pic" });
         }

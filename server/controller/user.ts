@@ -41,13 +41,13 @@ export const updatePassword: express.RequestHandler = async (req, res) => {
 }
 export const updateProfile: express.RequestHandler = async (req, res) => {
     const {email}: User = req.body;
-    const file = req.file
+    const file = req.file as Express.Multer.File;
     let profilePic
     try {
         const user = req.user as User;
 
         checkUser(user);
-
+        console.log(file);
         
         if(file){
             profilePic = await uploadToCloudinary(file.buffer, {folder: "profile_pic"})
