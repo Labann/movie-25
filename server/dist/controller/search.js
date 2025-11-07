@@ -7,7 +7,13 @@ export const search = async (req, res) => {
             return res.status(400).json({
                 error: "bad request, query is required"
             });
-        const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${process.env.API_ACCESS_TOKEN}`
+            }
+        });
         const data = await response.json();
         if (data.status_message) {
             throw Error(data.status_message);
