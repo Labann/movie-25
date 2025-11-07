@@ -14,7 +14,7 @@ export const updatePassword = async (req, res) => {
         checkUser(user);
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(password, salt);
-        const newUser = await prisma.user.update({
+        const updatedUser = await prisma.user.update({
             where: {
                 email: user.email
             },
@@ -22,7 +22,7 @@ export const updatePassword = async (req, res) => {
                 password: passwordHash
             }
         });
-        return res.status(200).json(newUser);
+        return res.status(200).json(updatedUser);
     }
     catch (error) {
         console.error(error);
@@ -39,7 +39,7 @@ export const updateProfile = async (req, res) => {
         const user = req.user;
         checkUser(user);
         if (file) {
-            profilePic = await uploadToCloudinary(file?.buffer, { folder: "profile_imgs" });
+            profilePic = await uploadToCloudinary(file.buffer, { folder: "profile_pics" });
         }
         const updatedUser = await prisma.user.update({
             where: {

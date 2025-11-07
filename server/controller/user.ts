@@ -22,7 +22,7 @@ export const updatePassword: express.RequestHandler = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(password, salt);
 
-        const newUser = await prisma.user.update({
+        const updatedUser = await prisma.user.update({
             where: {
                 email: user.email
             },
@@ -31,7 +31,7 @@ export const updatePassword: express.RequestHandler = async (req, res) => {
             }
         })
 
-        return res.status(200).json(newUser);
+        return res.status(200).json(updatedUser);
     } catch (error) {
         console.error(error);
         return res.status(500).json({
@@ -50,7 +50,7 @@ export const updateProfile: express.RequestHandler = async (req, res) => {
         
         
         if(file){
-            profilePic = await uploadToCloudinary(file?.buffer, {folder: "profile_imgs"})
+            profilePic = await uploadToCloudinary(file.buffer, {folder: "profile_pics"})
         }
 
         
