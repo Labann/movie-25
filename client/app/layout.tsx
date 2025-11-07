@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-
+import Navbar from "./components/Navbar";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -13,6 +13,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Movie recommender",
   description: "An web-app for recommending movies",
+  icons: {
+    icon: "/logo_.png"
+  }
 };
 
 export default function RootLayout({
@@ -25,6 +28,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} antialiased`}
       >
+        <Navbar/>
         {children}
       </body>
     </html>
