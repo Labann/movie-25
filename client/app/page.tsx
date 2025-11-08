@@ -1,6 +1,5 @@
-import Image from "next/image";
-import Hero from "./components/Hero";
-import Offers from "./components/Offer";
+import Hero from "@/components/Hero";
+import Offers from "@/components/Offer";
 export default function Home() {
   return (
     <div>
