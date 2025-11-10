@@ -6,6 +6,23 @@
 .scroll-none::-webkit-scrollbar{
   display: none
 }
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-password-toggle-button,
+input[type="password"]::-webkit-clear-button,
+input[type="password"]::-webkit-inner-spin-button {
+  display: none !important;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none !important;
+}
+
+input[type="password"]::-moz-clear {
+  display: none !important;
+}
+
 @theme{
   --color-primary: #0E0D13;
   --color-secondary: #3B5175;
