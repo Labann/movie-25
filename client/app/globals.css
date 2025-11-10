@@ -3,6 +3,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.scroll-none::-webkit-scrollbar{
+  display: none
+}
 @theme{
   --color-primary: #0E0D13;
   --color-secondary: #3B5175;

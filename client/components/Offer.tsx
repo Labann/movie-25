@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import SlideShow from './SlideShow'
 import OfferCard from './OfferCard'
 const Offers = () => {
   return (
@@ -14,6 +15,7 @@ const Offers = () => {
                 <OfferCard title="Documentaries"/>
               </div>
           </div>
+          
       </div>
     </div>
    

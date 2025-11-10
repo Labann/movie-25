@@ -2,7 +2,7 @@ import React from 'react'
 
 const Failed = () => {
   return (
-    <div>Failed</div>
+    <div className='min-h-screen'>Failed</div>
   )
 }
 

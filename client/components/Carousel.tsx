@@ -53,18 +53,18 @@ export function Slider() {
   },
 ]
   return (
-    <div className="mx-auto max-w-7xl p-4 h-[45vh]">
-      <Carousel setApi={setApi} className="h-[45vh]">
+    <div className="mx-auto max-w-7xl p-4 h-[30vh] md:h-[45vh]">
+      <Carousel setApi={setApi} className="h-[30vh] md:h-[45vh]">
         <CarouselContent>
           {items.map((item, index) => (
             <CarouselItem key={index}>  
                   <Image 
                     src={item.url}
                     alt="img"
-                    width={300}
-                    height={200}
+                    width={100}
+                    height={100}
                     unoptimized
-                    className="w-full h-1/2"
+                    className="w-full md:h-[45vh] h-[30vh] rounded-md"
                   />
                 
               
@@ -73,6 +73,7 @@ export function Slider() {
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
+        
       </Carousel>
       
     </div>

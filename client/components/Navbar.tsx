@@ -6,9 +6,9 @@ import { IoIosSearch } from "react-icons/io";
 import { FaPlus } from "react-icons/fa6";
 import Link from 'next/link';
 const Navbar = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   return (
-    <div className={`${isLogin? `bg-primary`: `bg-default/60`} z-50 px-6 fixed top-0 left-0 w-full flex items-center justify-between`}>
+    <div className={`${isLogin? `bg-primary`: `bg-default/60`} z-50 md:px-6 pr-2 fixed top-0 left-0 w-full flex items-center justify-between`}>
         <Link href={"/"} className="">
             <Image
                 src={"/logo_.png"}
@@ -19,7 +19,7 @@ const Navbar = () => {
         </Link>
         {
           isLogin && (
-            <div className="flex items-center mx-auto space-x-6 text-lg text-white">
+            <div className="md:flex hidden items-center mx-auto space-x-6 text-lg text-white">
               <Link href={"/home"}  className="flex space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
                 <CiHome size={"1.2em"}/>
                 <span>Home</span>
@@ -49,9 +49,9 @@ const Navbar = () => {
             </Link>
           )
         }
-        {!isLogin && <div className="flex spacex-x-2 items-center">
-            <button className='text-sm bg-gray-semibold hover:bg-gray-light rounded-2xl px-10 py-1 text-white cursor-pointer'>sign in</button>
-        </div>}
+        {!isLogin && <Link href={"/login"} className="flex spacex-x-2 items-center">
+            <button className='text-sm bg-gray-semibold hover:bg-gray-light rounded-2xl md:px-12 px-6 py-1 text-white cursor-pointer'>sign in</button>
+        </Link>}
     </div>
   )
 }
