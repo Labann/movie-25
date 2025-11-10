@@ -8,8 +8,9 @@ const Home = () => {
         <Slider />
         <SlideShow title='Popular searches'/>
         <SlideShow title='Trending'/>
-        <Actors/>
+        <Actors title='Most Famous actor globally right now'/>
         <SlideShow title='Recommended For you'/>
+        
     </div>
   )
 }
