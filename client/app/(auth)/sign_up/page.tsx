@@ -77,7 +77,7 @@ const Sign_up = () => {
               {formik.touched.password && formik.errors.password && <span className='text-red-500'>{formik.errors.password}</span>}
           </div>
 
-          <button type='submit' className='bg-gray-semibold text-sm w-full p-2 cursor-pointer rounded-xl capitalize'>
+          <button type='submit' className='bg-gray-semibold flex items-center justify-center text-sm w-full p-2 cursor-pointer rounded-xl capitalize'>
             {isLoading? <SpinnerCustom/>: "sign up now"}
           </button>
         </form>
