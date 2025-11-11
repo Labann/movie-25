@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ApiUrl } from "../util/config";
-import { ArraySchema } from "yup";
+import { IMovie } from "../types/my_types";
 
 interface IInitialState{ 
-    content: [],
+    content: IMovie[],
     isError: boolean
     isSuccess: boolean
     isLoading: boolean
     message: string
 }
 export const discoverActions = createAsyncThunk<
-    [], 
+    {page: number, results: IMovie[]}, 
     void,
     {rejectValue: string}
 >("/discover/actions", async (_, thunkApi) => {
@@ -37,7 +37,7 @@ export const discoverActions = createAsyncThunk<
 })
 
 export const discoverAnimations = createAsyncThunk<
-    [], 
+    {page: number, results: IMovie[]}, 
     void,
     {rejectValue: string}
 >("/discover/animations", async (_, thunkApi) => {
@@ -64,7 +64,7 @@ export const discoverAnimations = createAsyncThunk<
 })
 
 export const discoverDocumentaries = createAsyncThunk<
-    [], 
+    {page: number, results: IMovie[]}, 
     void,
     {rejectValue: string}
 >("/discover/documentaries", async (_, thunkApi) => {
@@ -91,7 +91,7 @@ export const discoverDocumentaries = createAsyncThunk<
 })
 
 export const discoverSeries = createAsyncThunk<
-    [], 
+    {page: number, results: IMovie[]}, 
     void,
     {rejectValue: string}
 >("/discover/series", async (_, thunkApi) => {
@@ -144,9 +144,9 @@ const discoverSlice = createSlice({
             })
             .addCase(discoverActions.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.content = action.payload
+                state.content = action.payload.results
                 state.isSuccess = true
-                console.log(action.payload)
+                console.log(action.payload.results)
             })
             .addCase(discoverActions.rejected, (state, action) => {
                 state.isLoading = false
@@ -159,9 +159,9 @@ const discoverSlice = createSlice({
             })
             .addCase(discoverAnimations.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.content = action.payload
+                state.content = action.payload.results
                 state.isSuccess = true
-                console.log(action.payload)
+                console.log(action.payload.results)
             })
             .addCase(discoverAnimations.rejected, (state, action) => {
                 state.isLoading = false
@@ -174,9 +174,9 @@ const discoverSlice = createSlice({
             })
             .addCase(discoverDocumentaries.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.content = action.payload
+                state.content = action.payload.results
                 state.isSuccess = true
-                console.log(action.payload)
+                console.log(action.payload.results)
             })
             .addCase(discoverDocumentaries.rejected, (state, action) => {
                 state.isLoading = false
@@ -189,9 +189,9 @@ const discoverSlice = createSlice({
             })
             .addCase(discoverSeries.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.content = action.payload
+                state.content = action.payload.results
                 state.isSuccess = true
-                console.log(action.payload)
+                console.log(action.payload.results)
             })
             .addCase(discoverSeries.rejected, (state, action) => {
                 state.isLoading = false

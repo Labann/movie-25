@@ -5,25 +5,29 @@ import { GoDotFill } from "react-icons/go";
 import { FaPlus } from "react-icons/fa6";
 import Image from 'next/image'
 import { IoIosShareAlt } from "react-icons/io";
-const DiscoverCard = () => {
+import { IMovie } from '@/app/types/my_types';
+import { getGenreNames } from '@/app/util/destructureGenres';
+import { formatRuntimeSafe } from '@/app/util/timeFormat';
+const DiscoverCard = ({movie}: {movie: IMovie}) => {
   return (
     <div className='rounded-md p-2 w-fit bg-gray-neutral'>
         <Image
             alt="discover-card"
             width={300}
             height={300}
-            src={"/animation.jpg"}
+            src={movie.posterPath || ""}
+            unoptimized
             className='w-full object-fit rounded-md'
         />
         <div className="flex flex-col space-y-6">
-        <h1 className='capitalize text-lg md:text-5xl'>The Fault in our stars</h1>
+        <h1 className='capitalize text-lg md:text-5xl'>{movie.title}</h1>
         <div className="flex space-x-2 font-bold items-center text-xs">
-            <button className='border-white border p-1 cursor-pointer'>PG-13</button>
-            <p>06/03/2014</p>
+            <button className='border-white border p-1 cursor-pointer'>{movie?.adult? "PG-18": "PG-13"}</button>
+            <p>{movie.createdAt}</p>
             <GoDotFill/>
-            <p>Romance, Drama</p>
+            <p>{getGenreNames(movie.genreIds)}</p>
             <GoDotFill/>
-            <p>2h 6min</p>
+            <p>{formatRuntimeSafe(movie.runtime)}</p>
         </div>
         <p className='text-gray-300 text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum saepe molestias porro reprehenderit nihil hic optio, incidunt perferendis dolor eveniet temporibus quisquam, nostrum qui ea magnam quod itaque, officia nobis?</p>
         <div className="pt-4 flex space-x-3 items-center">

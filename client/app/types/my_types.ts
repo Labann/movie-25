@@ -22,10 +22,11 @@ export interface IMovie{
     voteCount: string
     adult: boolean
     video: boolean
-    genreIds: JSON
+    genreIds: [number]
     mediaType: string
-    cast: IMovieCast
+    cast: IMovieCast[]
     searchHistory: ISearchHistory
+    runtime?: number;
     createdAt: number
     updatedAt: number
 }
