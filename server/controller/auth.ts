@@ -113,7 +113,7 @@ export const redirectForGoogleAuth: express.RequestHandler = async (req, res) =>
         checkUser(user);
         const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET!, {expiresIn: "15d"});
 
-        res.redirect(`${process.env.CLIENT_URL!}?token=${token}`);
+        res.redirect(`${process.env.CLIENT_URL!}/home/?token=${token}`);
     } catch (error) {
         console.error(error);
         return res.status(500).json({
