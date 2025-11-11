@@ -1,7 +1,19 @@
 import * as express from "express";
 import fetchFn from "../utils/fetchFn.js";
-import { discoverActionUrl, discoverAnimationUrl, discoverDocumentariesUrl, discoverDramaUrl, discoverHorrorUrl, discoverScienceFictionUrl } from "../utils/url.js";
+import { discoverActionUrl, discoverAnimationUrl, discoverDocumentariesUrl, discoverDramaUrl, discoverHorrorUrl, discoverScienceFictionUrl, discoverSeriesUrl } from "../utils/url.js";
 
+
+export const discoverSeries: express.RequestHandler = async (req, res) => {
+    try {
+        const data = await fetchFn(`${discoverSeriesUrl}`)
+        return res.status(200).json(data);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: (error as Error).message
+        })
+    }
+}
 export const discoverAction: express.RequestHandler = async (req, res) => {
     try {
         const data = await fetchFn(discoverActionUrl);

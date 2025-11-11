@@ -1,4 +1,5 @@
 import * as express from "express";
+export declare const discoverSeries: express.RequestHandler;
 export declare const discoverAction: express.RequestHandler;
 export declare const discoverAnimations: express.RequestHandler;
 export declare const discoverDocumentaries: express.RequestHandler;

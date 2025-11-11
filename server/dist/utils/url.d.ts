@@ -4,6 +4,7 @@ export declare const discoverDocumentariesUrl = "https://api.themoviedb.org/3/di
 export declare const discoverDramaUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=18";
 export declare const discoverHorrorUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=27";
 export declare const discoverScienceFictionUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=878";
+export declare const discoverSeriesUrl = "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=878";
 export declare const trendingUrl = "https://api.themoviedb.org/3/trending/all/day?language=en-US";
 export declare const famousActorsUrl = "https://api.themoviedb.org/3/trending/person/day?language=en-US";
 export declare const recommendationUrl = "https://api.themoviedb.org/3/movie/movie_id/recommendations?language=en-US&page=1";
