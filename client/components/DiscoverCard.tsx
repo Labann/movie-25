@@ -16,7 +16,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
             alt="discover-card"
             width={300}
             height={300}
-            src={`${ImgUrl}${movie.backdrop_path}`}
+            src={`${ImgUrl}w780${movie.backdrop_path}`}
             unoptimized
             className='w-full object-fit rounded-md'
         />}
