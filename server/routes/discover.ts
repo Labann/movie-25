@@ -5,11 +5,11 @@ import { discoverAction, discoverAnimations, discoverDocumentaries, discoverDram
 
 const router = express.Router();
 
-router.get("/action", protect, discoverAction);
-router.get("/animation", protect, discoverAnimations);
-router.get("/documentaries", protect, discoverDocumentaries);
-router.get("/drama", protect, discoverDrama);
-router.get("/horror", protect, discoverHorror);
-router.get("/scienceFiction", protect, discoverScienceFictions);
-router.get("/series", protect, discoverSeries);
+router.get("/action",  discoverAction);
+router.get("/animation",  discoverAnimations);
+router.get("/documentaries",  discoverDocumentaries);
+router.get("/drama",  discoverDrama);
+router.get("/horror",  discoverHorror);
+router.get("/scienceFiction",  discoverScienceFictions);
+router.get("/series",  discoverSeries);
 export default router;

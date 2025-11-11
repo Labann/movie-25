@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { FiEye } from "react-icons/fi";
@@ -10,6 +10,7 @@ import { useAppDispatch } from '@/app/hooks/redux';
 import { login_v2, loginV1 } from '@/app/store/authSlice';
 import { toast } from 'react-toastify';
 import { SpinnerCustom } from '@/components/ui/spinner';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
   const [isSeen, setIsSeen] = useState(false);
@@ -18,6 +19,7 @@ const Login = () => {
     email : Yup.string().email("Invalid format").required(),
     password: Yup.string().min(3).required("Password is required")
   })
+  const router= useRouter()
   const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {email: "", password: ''},
@@ -30,7 +32,9 @@ const Login = () => {
         toast.error(action.payload as string)
       }
       if(action.type === "/auth/v1/login/fulfilled"){
+        
         toast.success("logged in successfully")
+        router.push("/home")
       }
     }
   })

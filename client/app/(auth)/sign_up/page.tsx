@@ -10,6 +10,7 @@ import { useAppDispatch } from '@/app/hooks/redux';
 import { login_v2, sign_upV1 } from '@/app/store/authSlice';
 import { toast } from 'react-toastify';
 import { SpinnerCustom } from '@/components/ui/spinner';
+import { useRouter } from 'next/navigation';
 const Sign_up = () => {
   
     const [isSeen, setIsSeen] = useState(false);
@@ -18,6 +19,7 @@ const Sign_up = () => {
       email : Yup.string().email("Invalid format").required(),
       password: Yup.string().min(3).required("Password is required")
     })
+    const router = useRouter();
     const dispatch = useAppDispatch();
     const formik = useFormik({
       initialValues: {email: "", password: ''},
@@ -31,6 +33,7 @@ const Sign_up = () => {
         }
         if(action.type === "/auth/v1/sign_up/fulfilled"){
           toast.success("user created successfully")
+          router.push("/home")
         }
       }
     })
