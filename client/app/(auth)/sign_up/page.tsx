@@ -6,6 +6,9 @@ import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
+import { useAppDispatch } from '@/app/hooks/redux';
+import { sign_upV1 } from '@/app/store/authSlice';
+import { toast } from 'react-toastify';
 const Sign_up = () => {
   
     const [isSeen, setIsSeen] = useState(false);
@@ -13,11 +16,19 @@ const Sign_up = () => {
       email : Yup.string().email("Invalid format").required(),
       password: Yup.string().min(3).required("Password is required")
     })
-    
+    const dispatch = useAppDispatch();
     const formik = useFormik({
       initialValues: {email: "", password: ''},
       validationSchema: validationSchema,
-      onSubmit: () => console.log("submitted")
+      onSubmit: async (values) => {
+        const action = await dispatch(sign_upV1(values));
+        if(action.type === "rejected"){
+          toast.error(String(action.payload))
+        }
+        if(action.type === "fulfilled"){
+          toast.success("user created successfully")
+        }
+      }
     })
     return (
      <div className="min-h-screen relative bg-primary p-4 bg-[url('/hero.png')] py-38">
