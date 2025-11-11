@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./authSlice"
-
+import discoverReducer  from "./discoverSlice"
 const store = configureStore({
     reducer: {
-        auth: authReducer
+        auth: authReducer,
+        discover: discoverReducer
     }
 })
 

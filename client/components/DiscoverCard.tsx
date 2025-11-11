@@ -1,0 +1,44 @@
+"use client"
+import React from 'react'
+import { FaPlay } from "react-icons/fa";
+import { GoDotFill } from "react-icons/go";
+import { FaPlus } from "react-icons/fa6";
+import Image from 'next/image'
+import { IoIosShareAlt } from "react-icons/io";
+const DiscoverCard = () => {
+  return (
+    <div className='rounded-md p-2 w-fit bg-gray-neutral'>
+        <Image
+            alt="discover-card"
+            width={300}
+            height={300}
+            src={"/animation.jpg"}
+            className='w-full object-fit rounded-md'
+        />
+        <div className="flex flex-col space-y-6">
+        <h1 className='capitalize text-lg md:text-5xl'>The Fault in our stars</h1>
+        <div className="flex space-x-2 font-bold items-center text-xs">
+            <button className='border-white border p-1 cursor-pointer'>PG-13</button>
+            <p>06/03/2014</p>
+            <GoDotFill/>
+            <p>Romance, Drama</p>
+            <GoDotFill/>
+            <p>2h 6min</p>
+        </div>
+        <p className='text-gray-300 text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum saepe molestias porro reprehenderit nihil hic optio, incidunt perferendis dolor eveniet temporibus quisquam, nostrum qui ea magnam quod itaque, officia nobis?</p>
+        <div className="pt-4 flex space-x-3 items-center">
+            <button className='bg-gray-neutral cursor-pointer flex text-sm items-center px-6 py-2 space-x-2 rounded-2xl capitalize text-white'>
+                <FaPlay />
+                <p>Play Now</p>
+            </button>
+            <button className='border-gray-semibold text-sm border cursor-pointer px-6 py-2 rounded-2xl text-white'>Trailer</button>
+            <button className='cursor-pointer text-md border-gray-semibold border rounded-full p-1'><FaPlus size={'1.5em'}/>{""}</button>
+            <button className='cursor-pointer text-md border-gray-semibold border rounded-full p-1'><IoIosShareAlt size={"1.5em"}/>{""}</button>
+
+        </div>  
+    </div>
+    </div>
+  )
+}
+
+export default DiscoverCard
