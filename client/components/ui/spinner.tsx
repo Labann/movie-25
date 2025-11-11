@@ -15,7 +15,7 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
 
 export function SpinnerCustom() {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 p-2">
       <Spinner />
     </div>
   )

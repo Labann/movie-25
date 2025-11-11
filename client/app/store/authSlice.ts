@@ -23,7 +23,7 @@ IUser,
 {rejectValue: string}
 >("/auth/v1/login", async (user, thunkApi) => {
     try {
-        const res = await fetch(`${ApiUrl}/auth/v1/login`, {
+        const res = await fetch(`${ApiUrl}/api/auth/v1/login`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
