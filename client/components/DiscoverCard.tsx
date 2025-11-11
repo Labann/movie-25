@@ -8,6 +8,7 @@ import { IoIosShareAlt } from "react-icons/io";
 import { IMovie } from '@/app/types/my_types';
 import { getGenreNames } from '@/app/util/destructureGenres';
 import { formatRuntimeSafe } from '@/app/util/timeFormat';
+import { ImgUrl } from '@/app/util/config';
 const DiscoverCard = ({movie}: {movie: IMovie}) => {
   return (
     <div className='rounded-md p-2 w-fit bg-gray-neutral'>
@@ -15,7 +16,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
             alt="discover-card"
             width={300}
             height={300}
-            src={movie.backdrop_path}
+            src={`${ImgUrl}${movie.backdrop_path}`}
             unoptimized
             className='w-full object-fit rounded-md'
         />}
