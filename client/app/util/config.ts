@@ -1,1 +1,1 @@
-const ApiUrl = "https://movie-25.onrender.com"
+export const ApiUrl = "https://movie-25.onrender.com"

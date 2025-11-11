@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IUser } from "../types/my_types";
+import { ApiUrl } from "../util/config";
 
 interface IInitialState{
     currentUser: IUser | null
