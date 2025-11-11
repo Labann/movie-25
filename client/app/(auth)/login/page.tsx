@@ -29,7 +29,7 @@ const Login = () => {
       if(action.type === "/auth/v1/login/rejected"){
         toast.error(action.payload as string)
       }
-      if(action.payload === "/auth/v1/login/fulfilled"){
+      if(action.type === "/auth/v1/login/fulfilled"){
         toast.success("logged in successfully")
       }
     }
