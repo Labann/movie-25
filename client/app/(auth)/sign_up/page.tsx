@@ -7,7 +7,7 @@ import { FiEyeOff } from "react-icons/fi";
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { useAppDispatch } from '@/app/hooks/redux';
-import { sign_upV1 } from '@/app/store/authSlice';
+import { login_v2, sign_upV1 } from '@/app/store/authSlice';
 import { toast } from 'react-toastify';
 import { SpinnerCustom } from '@/components/ui/spinner';
 const Sign_up = () => {
@@ -38,7 +38,7 @@ const Sign_up = () => {
      <div className="min-h-screen relative bg-primary p-4 bg-[url('/hero.png')] py-38">
       <div className="absolute top-0 left-0 w-full h-full bg-black/30 z-5"></div>
       <div  
-        className="max-w-lg mx-auto py-6 rounded-md p-5 flex flex-col space-y-1 relative z-10 bg-white/30 border text-white">
+        className="max-w-lg mx-auto py-6 rounded-md p-5 flex flex-col space-y-1 relative z-10 bg-white/10 border text-white">
         <form onSubmit={formik.handleSubmit} action="" className='flex flex-col w-full space-y-2'>
           <h3 className='text-center pb-4 md:text-xl text-lg'>Sign up to Movie</h3>
           <div className="w-full flex flex-col space-y-2">
@@ -88,7 +88,7 @@ const Sign_up = () => {
           <p className='text-xs'>or</p>
           <div className="border border-gray-light flex-1"></div>
         </div>
-        <button className='bg-gray-semibold max-w-lg mx-auto flex space-x-2 text-sm items-center justify-center mt-4 text-white w-full p-2 cursor-pointer rounded-xl capitalize'>
+        <button onClick={() => dispatch(login_v2())} className='bg-gray-semibold max-w-lg mx-auto flex space-x-2 text-sm items-center justify-center mt-4 text-white w-full p-2 cursor-pointer rounded-xl capitalize'>
             <FcGoogle  />
             <p>Sing up with Google</p>          
         </button>

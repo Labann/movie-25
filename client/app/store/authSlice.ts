@@ -71,6 +71,19 @@ export const sign_upV1 = createAsyncThunk<
         return thunkApi.rejectWithValue((error as Error).message)
     }
 })
+
+export const login_v2 = createAsyncThunk<
+void,
+void,
+{rejectValue: string}
+>("/auth/v2/login", async (_, thunkApi) => {
+    try {
+        window.location.href = `${ApiUrl}/api/auth/v2/login` 
+    } catch (error) {
+        console.error(error);
+        return thunkApi.rejectWithValue((error as Error).message)
+    }
+})
 const authSlice = createSlice({
     name: "auth",
     initialState: initialState,
