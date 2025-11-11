@@ -11,19 +11,19 @@ export interface IUser{
 export interface IMovie{
     id: number
     title:  string
-    originalTitle: string
+    original_title: string
     overview?: string
-    posterPath?: string
-    backdropPath?: string,
-    originalLanguage:  string
-    releaseDate: string
+    poster_path?: string
+    backdrop_path?: string,
+    original_language:  string
+    release_date: string
     popularity: string
-    voteAverage: string
-    voteCount: string
+    vote_average: string
+    vote_count: string
     adult: boolean
     video: boolean
     genre_ids: [number]
-    mediaType: string
+    media_type: string
     cast: IMovieCast[]
     searchHistory: ISearchHistory
     runtime?: number;
