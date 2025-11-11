@@ -26,10 +26,10 @@ const Login = () => {
       setIsLoading(true);
       const action = await dispatch(loginV1(values))
       setIsLoading(false);
-      if(action.type === "rejected"){
+      if(action.type === "/auth/v1/login/rejected"){
         toast.error(action.payload as string)
       }
-      if(action.payload === "fulfilled"){
+      if(action.payload === "/auth/v1/login/fulfilled"){
         toast.success("logged in successfully")
       }
     }

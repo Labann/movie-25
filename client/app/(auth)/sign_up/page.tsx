@@ -26,10 +26,10 @@ const Sign_up = () => {
         setIsLoading(true)
         const action = await dispatch(sign_upV1(values));
         setIsLoading(false)
-        if(action.type === "rejected"){
+        if(action.type === "/auth/v1/sign_up/rejected"){
           toast.error(String(action.payload))
         }
-        if(action.type === "fulfilled"){
+        if(action.type === "/auth/v1/sign_up/fulfilled"){
           toast.success("user created successfully")
         }
       }
@@ -82,7 +82,7 @@ const Sign_up = () => {
           </button>
         </form>
         
-        <div className="text-sm text-center">{"Already have an account? "}<Link href={"/login"} className='text-gray-light underline'>sign up</Link></div>
+        <div className="text-sm text-center">{"Already have an account? "}<Link href={"/login"} className='text-gray-light underline'>sign in</Link></div>
         <div className="flex items-center space-x-2">
           <div className="border border-gray-light flex-1"></div>
           <p className='text-xs'>or</p>

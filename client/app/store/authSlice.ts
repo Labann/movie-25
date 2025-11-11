@@ -21,7 +21,7 @@ export const loginV1 = createAsyncThunk<
 IUser,
 {email: string, password: string},
 {rejectValue: string}
->("/auth/login", async (user, thunkApi) => {
+>("/auth/v1/login", async (user, thunkApi) => {
     try {
         const res = await fetch(`${ApiUrl}/auth/v1/login`, {
             method: "POST",
@@ -49,7 +49,7 @@ export const sign_upV1 = createAsyncThunk<
     IUser,
     {email: string, password: string},
     {rejectValue: string}
->("/auth/sing_up", async (user, thunkApi) => {
+>("/auth/v1/sing_up", async (user, thunkApi) => {
     try {
         const res = await fetch(`${ApiUrl}/api/auth/v1/sign_up`, {
             method: "POST",
