@@ -11,14 +11,14 @@ import { formatRuntimeSafe } from '@/app/util/timeFormat';
 const DiscoverCard = ({movie}: {movie: IMovie}) => {
   return (
     <div className='rounded-md p-2 w-fit bg-gray-neutral'>
-        <Image
+        {movie.backdropPath && <Image
             alt="discover-card"
             width={300}
             height={300}
-            src={movie.posterPath || ""}
+            src={movie.backdropPath}
             unoptimized
             className='w-full object-fit rounded-md'
-        />
+        />}
         <div className="flex flex-col space-y-6">
         <h1 className='capitalize text-lg md:text-5xl'>{movie.title}</h1>
         <div className="flex space-x-2 font-bold items-center text-xs">
