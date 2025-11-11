@@ -9,8 +9,11 @@ import { FcGoogle } from "react-icons/fc";
 import { useAppDispatch } from '@/app/hooks/redux';
 import { loginV1 } from '@/app/store/authSlice';
 import { toast } from 'react-toastify';
+import { SpinnerCustom } from '@/components/ui/spinner';
+
 const Login = () => {
   const [isSeen, setIsSeen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const validationSchema = Yup.object({
     email : Yup.string().email("Invalid format").required(),
     password: Yup.string().min(3).required("Password is required")
@@ -20,7 +23,9 @@ const Login = () => {
     initialValues: {email: "", password: ''},
     validationSchema: validationSchema,
     onSubmit: async (values) => {
+      setIsLoading(true);
       const action = await dispatch(loginV1(values))
+      setIsLoading(false);
       if(action.type === "rejected"){
         toast.error(action.payload as string)
       }
@@ -73,7 +78,7 @@ const Login = () => {
           </div>
 
           <button type='submit' className='bg-gray-semibold text-sm w-full p-2 cursor-pointer rounded-xl capitalize'>
-            sign in now
+            {isLoading? <SpinnerCustom/>: "sign in now"}
           </button>
         </form>
         
