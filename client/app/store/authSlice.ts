@@ -45,6 +45,32 @@ export const getMe = createAsyncThunk<
     }
 })
 
+export const logout = createAsyncThunk<
+    {message: string}, 
+    void,
+    {rejectValue: string}
+>("/auth/logout", async (_ , thunkApi) =>{
+    try {
+        const res = await fetch(`${ApiUrl}/api/auth/logout`, {
+            method: "POST",
+            headers :{
+                "Content-type": "application/json"
+            },
+            credentials :"include"
+        })
+
+        const data = await res.json()
+
+        if(res.status !== 200){
+            return thunkApi.rejectWithValue(data.error);
+        }
+        localStorage.removeItem("currentUser");
+        return data;
+    } catch (error) {
+        console.error(error)
+        return thunkApi.rejectWithValue((error as Error).message)
+    }
+})
 export const loginV1 = createAsyncThunk<
 IUser,
 {email: string, password: string},
@@ -168,6 +194,10 @@ const authSlice = createSlice({
             state.isError = true
             state.message = action.payload as string
         })
+        .addCase(logout.pending, (state) => {
+            state.isLoading = true
+        })
+        
     }
 })
 
