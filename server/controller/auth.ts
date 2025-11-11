@@ -36,7 +36,14 @@ export const sign_up: express.RequestHandler = async (req, res) => {
             }
         })
 
-        
+        const token = jwt.sign({userId: newUser.id}, process.env.JWT_SECRET!, {expiresIn: "15d"}) 
+        res.cookie("token", token, {
+            httpOnly: true, //prevents access from js
+            maxAge: 24 * 15 * 60 * 60 * 1000, //expire time
+            secure: process.env.NODE_ENV === "development", //allows it to be accessed over https only
+            sameSite: "none" //prevents against CRSF attacks
+        });
+
         return res.status(201).json(newUser);
     } catch (error) {
         console.error(error);
@@ -74,7 +81,7 @@ export const login: express.RequestHandler = async (req, res) => {
             httpOnly: true, //prevents access from js
             maxAge: 24 * 15 * 60 * 60 * 1000, //expire time
             secure: process.env.NODE_ENV === "development", //allows it to be accessed over https only
-            sameSite: "strict" //prevents against CRSF attacks
+            sameSite: "none" //prevents against CRSF attacks
         });
 
         return res.status(200).json(user);
@@ -93,7 +100,7 @@ export const logout: express.RequestHandler = async (req, res) => {
             maxAge: 0,
             httpOnly: true, //prevents access from js
             secure: process.env.NODE_ENV === "development", //allows it to be accessed over https only
-            sameSite: "strict"
+            sameSite: "none"
         })
 
         return res.status(200).json({
@@ -112,8 +119,13 @@ export const redirectForGoogleAuth: express.RequestHandler = async (req, res) =>
     try {
         const user = req.user as User
         checkUser(user);
-        const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET!, {expiresIn: "15d"});
-
+        const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET!, {expiresIn: "15d"}) 
+        res.cookie("token", token, {
+            httpOnly: true, //prevents access from js
+            maxAge: 24 * 15 * 60 * 60 * 1000, //expire time
+            secure: process.env.NODE_ENV === "development", //allows it to be accessed over https only
+            sameSite: "none" //prevents against CRSF attacks
+        });
         res.redirect(`${process.env.CLIENT_URL!}/home/?token=${token}`);
     } catch (error) {
         console.error(error);
