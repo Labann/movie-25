@@ -22,7 +22,7 @@ export interface IMovie{
     voteCount: string
     adult: boolean
     video: boolean
-    genreIds: [number]
+    genre_ids: [number]
     mediaType: string
     cast: IMovieCast[]
     searchHistory: ISearchHistory

@@ -25,7 +25,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
             <button className='border-white border p-1 cursor-pointer'>{movie?.adult? "PG-18": "PG-13"}</button>
             <p>{movie.createdAt}</p>
             <GoDotFill/>
-            <p>{getGenreNames(movie.genreIds)}</p>
+            <p>{getGenreNames(movie.genre_ids)}</p>
             <GoDotFill/>
             <p>{formatRuntimeSafe(movie.runtime)}</p>
         </div>
