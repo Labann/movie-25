@@ -3,6 +3,19 @@ import { checkUser } from "../utils/checkUser.js";
 import bcrypt from "bcryptjs";
 import prisma from "../utils/prisma.js";
 import { uploadToCloudinary } from "../utils/cloudinary.js";
+export const getMe = async (req, res) => {
+    try {
+        const user = req.user;
+        checkUser(user);
+        return res.status(200).json(user);
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: error.message
+        });
+    }
+};
 export const updatePassword = async (req, res) => {
     const { password } = req.body;
     try {

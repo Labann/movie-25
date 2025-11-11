@@ -13,6 +13,8 @@ router.get("/v2/login/", passport.authenticate("google", {
     session: false
 }));
 
+
+
 router.get("/v2/login/callback", passport.authenticate("google", {
     failureRedirect: `${process.env.CLIENT_URL!}/failed`,
     session: false

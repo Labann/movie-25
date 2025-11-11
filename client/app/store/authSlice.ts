@@ -17,6 +17,34 @@ const initialState: IInitialState = {
     message: ""
 }
 
+
+export const getMe = createAsyncThunk<
+    IUser,
+    void,
+    {rejectValue: string}
+>("/user/me", async (_, thunkApi) => {
+    try {
+        const res = await fetch(`${ApiUrl}/api/user/me`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            },
+            credentials: "include"
+        })
+
+        const data = await res.json();
+        
+        if(res.status !== 200){
+            return thunkApi.rejectWithValue(data.error);
+        }
+        localStorage.setItem("currentUser", JSON.stringify(data))
+        return data;
+    } catch (error) {
+        console.error(error);
+        return thunkApi.rejectWithValue((error as Error).message)
+    }
+})
+
 export const loginV1 = createAsyncThunk<
 IUser,
 {email: string, password: string},
@@ -38,6 +66,7 @@ IUser,
             return thunkApi.rejectWithValue(data.error);
         }
 
+        localStorage.setItem("currentUser", JSON.stringify(data))
         return data;
     } catch (error) {
         console.error(error);
@@ -64,6 +93,8 @@ export const sign_upV1 = createAsyncThunk<
         if(res.status !== 201){
             return thunkApi.rejectWithValue(data.error);
         }
+
+        localStorage.setItem("currentUser", JSON.stringify(data))
 
         return data;
     } catch (error) {
@@ -119,6 +150,20 @@ const authSlice = createSlice({
             state.currentUser = action.payload as IUser
         })
         .addCase(sign_upV1.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload as string
+        })
+        
+        .addCase(getMe.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(getMe.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.currentUser = action.payload
+            state.isSuccess = true
+        })
+        .addCase(getMe.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload as string

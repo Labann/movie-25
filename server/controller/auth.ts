@@ -86,6 +86,7 @@ export const login: express.RequestHandler = async (req, res) => {
     }
 }
 
+
 export const logout: express.RequestHandler = async (req, res) => {
     try {
         res.cookie("token", "", {

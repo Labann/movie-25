@@ -7,6 +7,18 @@ import { uploadToCloudinary } from "../utils/cloudinary.js";
 
 
 
+export const getMe: express.RequestHandler = async (req, res) =>{
+    try {
+        const user = req.user as User;
+        checkUser(user)
+        return res.status(200).json(user)
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: (error as Error).message
+        })
+    }
+}
 
 export const updatePassword: express.RequestHandler = async (req, res) => {
     const {password}: {password: string} = req.body;
