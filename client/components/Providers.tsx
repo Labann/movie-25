@@ -9,7 +9,7 @@ import {ToastContainer} from "react-toastify"
 const InitialState = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    
+    //will do
   }, [])
 }
 const Providers = ({children}: {
