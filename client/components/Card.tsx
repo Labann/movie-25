@@ -3,11 +3,12 @@ import React from 'react'
 import Image from 'next/image'
 import { IMovie } from '@/app/types/my_types';
 import Link from 'next/link';
+import { ImgUrl } from '@/app/util/config';
 const Card = ({movie}: {movie: IMovie}) => {
   return (
     <Link href={`/watch_screen/${movie.id}`} className='w-[17em] overflow-hidden'>
         {movie.backdrop_path && <Image 
-            src={movie?.backdrop_path}
+            src={`${ImgUrl}w780${movie?.backdrop_path}`}
             alt='card-img'
             width={200}
             height={200}

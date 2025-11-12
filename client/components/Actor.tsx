@@ -15,7 +15,7 @@ const Actor = ({name, img}: {name: string, img: string}) => {
   return (
     <div className="w-[9em] p-2 flex-col text-center space-y-2">
             {img && <Image 
-              src={`${ImgUrl}/w-600/${img}`}
+              src={`${ImgUrl}/w-780/${img}`}
               alt='thumbnail'
               width={100}
               height={100}
