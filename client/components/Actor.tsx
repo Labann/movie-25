@@ -17,6 +17,7 @@ const Actor = ({name, img}: {name: string, img: string}) => {
             {img && <Image 
               src={`${ImgUrl}/w-780/${img}`}
               alt='thumbnail'
+              unoptimized
               width={100}
               height={100}
               className='rounded-full w-[7em] h-[7em] mx-auto'
