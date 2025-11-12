@@ -5,7 +5,7 @@ import { IMovie } from '@/app/types/my_types';
 import Link from 'next/link';
 const Card = ({movie}: {movie: IMovie}) => {
   return (
-    <Link href={`/watch_screen/${movie.id}`} className='w-[17em]'>
+    <Link href={`/watch_screen/${movie.id}`} className='w-[17em] overflow-hidden'>
         {movie.backdrop_path && <Image 
             src={movie?.backdrop_path}
             alt='card-img'

@@ -12,12 +12,12 @@ import { ImgUrl } from '@/app/util/config';
 import Link from 'next/link';
 const DiscoverCard = ({movie}: {movie: IMovie}) => {
   return (
-    <div className='rounded-md p-2 max-w-xl bg-gray-neutral'>
-        {movie.backdrop_path && <Image
+    <div className='rounded-md p-2 max-w-xl bg-gray-neutral overflow-hidden'>
+        {movie.poster_path && <Image
             alt="discover-card"
             width={300}
             height={300}
-            src={`${ImgUrl}w780${movie.backdrop_path}`}
+            src={`${ImgUrl}w780${movie.poster_path}`}
             unoptimized
             className='w-full object-fit rounded-md hover:scale-105'
         />}
