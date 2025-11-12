@@ -1,6 +1,6 @@
 "use client"
 import { useParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import DiscoverCard, { DiscoverCardLoader } from '@/components/DiscoverCard'
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux'
 import { discoverActions, discoverAnimations, discoverDocumentaries, discoverDrama, discoverSeries } from '@/app/store/discoverSlice'
