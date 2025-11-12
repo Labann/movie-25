@@ -28,7 +28,7 @@ export const fetchMovieDetails = createAsyncThunk<
     IMovie,
     {movie_id: string},
     {rejectValue: string}
->("/movie/details", async (movie_id, thunkApi) => {
+>("/movie/details", async ({movie_id}, thunkApi) => {
     try {
         const res = await fetch(`${ApiUrl}/api/movie/${movie_id}`, {
             method: "GET",
@@ -56,7 +56,7 @@ export const fetchMovieCast = createAsyncThunk<
     {id: number, cast: IMovieCast[]},
     {movie_id: string},
     {rejectValue: string}
->("/movie/cast", async (movie_id, thunkApi) => {
+>("/movie/cast", async ({movie_id}, thunkApi) => {
     try {
         const res = await fetch(`${ApiUrl}/api/movie/cast/${movie_id}`, {
             method: "GET",

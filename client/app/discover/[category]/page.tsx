@@ -13,7 +13,7 @@ const Discover = () => {
     if(category === "Movie"){
       dispatch(discoverActions())
     }
-    if(category === "Series"){
+    if(category === "Drama"){
       dispatch(discoverSeries())
     }
     if(category === "Animation"){

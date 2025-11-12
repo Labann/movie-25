@@ -90,6 +90,7 @@ export const discoverDocumentaries = createAsyncThunk<
     }
 })
 
+
 export const discoverSeries = createAsyncThunk<
     {page: number, results: IMovie[]}, 
     void,
@@ -117,6 +118,34 @@ export const discoverSeries = createAsyncThunk<
     }
 })
 
+
+
+export const discoverDrama = createAsyncThunk<
+    {page: number, results: IMovie[]}, 
+    void,
+    {rejectValue: string}
+>("/discover/drama", async (_, thunkApi) => {
+    try {
+        const res = await fetch(`${ApiUrl}/api/discover/drama`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            },
+            credentials: "include"
+        })
+
+        const data = await res.json();
+
+        if(res.status !== 200){
+            return thunkApi.rejectWithValue(data.error);
+        }
+
+        return data;
+    } catch (error) {
+        console.error(error);
+        return thunkApi.rejectWithValue((error as Error).message)
+    }
+})
 
 const initialState: IInitialState ={
     content: [],
@@ -194,6 +223,21 @@ const discoverSlice = createSlice({
                 console.log(action.payload.results)
             })
             .addCase(discoverSeries.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload as string
+            })
+
+            .addCase(discoverDrama.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(discoverDrama.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.content = action.payload.results
+                state.isSuccess = true
+                console.log(action.payload.results)
+            })
+            .addCase(discoverDrama.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload as string
