@@ -30,7 +30,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
             <GoDotFill/>
             <p>{formatRuntimeSafe(movie.runtime)}</p>
         </div>
-        <p className='text-gray-300 text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum saepe molestias porro reprehenderit nihil hic optio, incidunt perferendis dolor eveniet temporibus quisquam, nostrum qui ea magnam quod itaque, officia nobis?</p>
+        <p className='text-gray-300 text-md'>{movie.overview}</p>
         <div className="pt-4 flex space-x-3 items-center">
             <button className='bg-gray-neutral cursor-pointer flex text-sm items-center px-6 py-2 space-x-2 rounded-2xl capitalize text-white'>
                 <FaPlay />
@@ -46,4 +46,16 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
   )
 }
 
+export const DiscoverCardLoader = () => {
+    return (
+        <div className='bg-gray-neutral rounded-md max-w-xl p-3'>
+            <div className="h-[30em] bg-gray-light animate-pulse w-full rounded-md"></div>
+            <div className="flex flex-col space-y-3">
+                <div className="h-3 w-1/4 animate-pulse rounded-md bg-gray-light"></div>
+                <div className="h-3 w-1/2 animate-pulse rounded-md bg-gray-light"></div>
+                <div className="h-3 w-3/4 animate-pulse rounded-md bg-gray-light"></div>
+            </div>
+        </div>
+    )
+} 
 export default DiscoverCard
