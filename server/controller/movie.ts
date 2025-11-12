@@ -88,3 +88,31 @@ export const fetchTrending: express.RequestHandler = async (req, res) => {
         })
     }
 }
+
+
+export const fetchPopular: express.RequestHandler = async (req, res) => {
+    try {
+        const result = await fetch(`'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`, {
+                method: "GET",
+                headers: {
+                    "Content-type":"application/json",
+                    "Authorization": `Bearer ${process.env.API_ACCESS_TOKEN!}`
+                },
+                credentials: "include"           
+        })
+
+        const data = await result.json();
+
+        if(data.status_message){
+            throw Error(data.status_message);
+        }
+
+        return res.status(200).json(data);
+        
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: (error as Error).message
+        })
+    }
+}

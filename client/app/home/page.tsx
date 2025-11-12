@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+"use client"
+import React, {useEffect} from 'react'
 import SlideShow from '@/components/SlideShow'
 import { Slider } from '@/components/Carousel'
-import Actors from '@/components/Actors'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { fetchFamousActors } from '../store/personSlice'
 import Actor from '@/components/Actor'
@@ -23,7 +23,6 @@ const Home = () => {
           <div className="w-[80vw] overflow-x-scroll scroll-none mx-auto">
             <div className="flex items-center pt-3 space-x-3 w-fit">
               {person?.map(actor => <Actor key={actor.id} name={actor.original_name} img={actor.profile_path}/>)}
-            
             </div>
           </div>
         </div>

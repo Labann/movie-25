@@ -5,6 +5,8 @@ import { ApiUrl } from "../util/config";
 
 interface IInitialState{
     movie: IMovie | null,
+    trending: IMovie[] | null
+    popular: IMovie[]
     cast: IMovieCast[]
     isLoading: boolean,
     isError: boolean
@@ -13,7 +15,9 @@ interface IInitialState{
 }
 const initialState: IInitialState = {
     movie: null,
+    trending: [],
     cast: [],
+    popular: [],
     isLoading: false,
     isError: false,
     isSuccess: false,
@@ -74,7 +78,60 @@ export const fetchMovieCast = createAsyncThunk<
     }
 })
 
+export const fetchTrending = createAsyncThunk<
+    {page: number, results: IMovie[]},
+    void,
+    {rejectValue: string}
+>("/movie/trending", async (_, thunkApi) => {
+    try {
+        const res = await fetch(`${ApiUrl}/api/movie/trending`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+            },
+            credentials: "include"
+        })
 
+        const data = await res.json();
+
+        if(res.status !== 200){
+            return thunkApi.rejectWithValue(data.error)
+        }
+
+        return data;
+    } catch (error) {
+        console.error(error);
+        return thunkApi.rejectWithValue((error as Error).message)
+    }
+})
+
+export const fetchPopular = createAsyncThunk<
+    {page: number, results: IMovie[]},
+    void,
+    {rejectValue: string}
+>("/movie/popular", async (_, thunkApi) => {
+    try {
+        const res = await fetch(`${ApiUrl}/api/movie/popular`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                
+            },
+            credentials: "include"
+        })
+
+        const data = await res.json();
+
+        if(res.status !== 200){
+            return thunkApi.rejectWithValue(data.error);
+        }
+
+        return data;
+    } catch (error) {
+        console.error(error);
+        return thunkApi.rejectWithValue((error as Error).message)
+    }
+})
 const movieSlice = createSlice({
     name: "movie",
     initialState: initialState,
@@ -112,6 +169,34 @@ const movieSlice = createSlice({
                 state.cast = action.payload.cast
             })
             .addCase(fetchMovieCast.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload as string
+            })
+
+            .addCase(fetchTrending.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(fetchTrending.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.trending = action.payload.results
+            })
+            .addCase(fetchTrending.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload as string
+            })
+
+            .addCase(fetchPopular.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(fetchPopular.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.trending = action.payload.results
+            })
+            .addCase(fetchPopular.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload as string
