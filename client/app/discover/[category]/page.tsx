@@ -3,7 +3,7 @@ import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import DiscoverCard, { DiscoverCardLoader } from '@/components/DiscoverCard'
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux'
-import { discoverActions, discoverAnimations, discoverDocumentaries, discoverSeries } from '@/app/store/discoverSlice'
+import { discoverActions, discoverAnimations, discoverDocumentaries, discoverDrama, discoverSeries } from '@/app/store/discoverSlice'
 const Discover = () => {
   
   const {category} = useParams<{category: string}>()
@@ -14,7 +14,7 @@ const Discover = () => {
       dispatch(discoverActions())
     }
     if(category === "Drama"){
-      dispatch(discoverSeries())
+      dispatch(discoverDrama())
     }
     if(category === "Animation"){
       dispatch(discoverAnimations())
