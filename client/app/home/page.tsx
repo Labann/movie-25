@@ -10,7 +10,7 @@ const Home = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchFamousActors())
-  })
+  }, [dispatch])
   const {person} = useAppSelector(state => state.person);
   return (
     <div className="pt-30 bg-primary min-h-screen">

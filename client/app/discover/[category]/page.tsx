@@ -28,7 +28,7 @@ const Discover = () => {
   const {content} = useAppSelector(state => state.discover)
     return (
     <div className='min-h-screen bg-primary py-34 p-4'>
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-2">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-2 w-fit md:w-auto">
         {!isLoading && content.map(item => <DiscoverCard key={item.id} movie={item}/>)}
         {isLoading && ["1", "2", "3", "4", "5", "6"].map(item => <DiscoverCardLoader key={item} />)}
       </div>

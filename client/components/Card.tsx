@@ -24,4 +24,16 @@ const Card = ({movie}: {movie: IMovie}) => {
   )
 }
 
+export const CardLoader = () => {
+  return (
+    <div className='w-17'>
+      <div className="h-[12em] bg-gray-light animate-pulse"></div>
+      <div className="pt-4 flex flex-col space-y-3">
+        <div className="w-1/4 h-4 bg-gray-light animate-pulse"></div>
+        <div className="w-1/2 h-4 bg-gray-light animate-pulse"></div>
+        <div className="w-3/4 h-4 bg-gray-light animate-pulse"></div>
+      </div>
+    </div>
+  )
+}
 export default Card
