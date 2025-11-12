@@ -1,0 +1,1 @@
+{"version":3,"file":"person.js","sourceRoot":"","sources":["../../routes/person.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,OAAO,MAAM,SAAS,CAAA;AAClC,OAAO,EAAE,gBAAgB,EAAE,MAAM,yBAAyB,CAAC;AAG3D,MAAM,MAAM,GAAG,OAAO,CAAC,MAAM,EAAE,CAAC;AAEhC,MAAM,CAAC,GAAG,CAAC,SAAS,EAAE,gBAAgB,CAAC,CAAC;AACxC,eAAe,MAAM,CAAC"}

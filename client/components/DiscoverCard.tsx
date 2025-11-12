@@ -9,16 +9,17 @@ import { IMovie } from '@/app/types/my_types';
 import { getGenreNames } from '@/app/util/destructureGenres';
 import { formatRuntimeSafe } from '@/app/util/timeFormat';
 import { ImgUrl } from '@/app/util/config';
+import Link from 'next/link';
 const DiscoverCard = ({movie}: {movie: IMovie}) => {
   return (
-    <div className='rounded-md p-2 w-fit bg-gray-neutral'>
+    <div className='rounded-md p-2 max-w-xl bg-gray-neutral'>
         {movie.backdrop_path && <Image
             alt="discover-card"
             width={300}
             height={300}
             src={`${ImgUrl}w780${movie.backdrop_path}`}
             unoptimized
-            className='w-full object-fit rounded-md'
+            className='w-full object-fit rounded-md hover:scale-105'
         />}
         <div className="flex flex-col space-y-6">
         <h1 className='capitalize text-lg md:text-5xl'>{movie.title}</h1>
@@ -32,11 +33,11 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
         </div>
         <p className='text-gray-300 text-md'>{movie.overview}</p>
         <div className="pt-4 flex space-x-3 items-center">
-            <button className='bg-gray-neutral cursor-pointer flex text-sm items-center px-6 py-2 space-x-2 rounded-2xl capitalize text-white'>
+            <Link href={`/watching_screen/${movie.id}`} className='bg-gray-neutral border-gray-semibold border hover:bg-gray-light cursor-pointer flex text-sm items-center px-6 py-2 space-x-2 rounded-2xl capitalize text-white'>
                 <FaPlay />
                 <p>Play Now</p>
-            </button>
-            <button className='border-gray-semibold text-sm border cursor-pointer px-6 py-2 rounded-2xl text-white'>Trailer</button>
+            </Link>
+            
             <button className='cursor-pointer text-md border-gray-semibold border rounded-full p-1'><FaPlus size={'1.5em'}/>{""}</button>
             <button className='cursor-pointer text-md border-gray-semibold border rounded-full p-1'><IoIosShareAlt size={"1.5em"}/>{""}</button>
 
@@ -50,7 +51,7 @@ export const DiscoverCardLoader = () => {
     return (
         <div className='bg-gray-neutral rounded-md max-w-xl p-3'>
             <div className="h-[30em] bg-gray-light animate-pulse w-full rounded-md"></div>
-            <div className="flex flex-col space-y-3">
+            <div className="flex flex-col space-y-3 py-3">
                 <div className="h-3 w-1/4 animate-pulse rounded-md bg-gray-light"></div>
                 <div className="h-3 w-1/2 animate-pulse rounded-md bg-gray-light"></div>
                 <div className="h-3 w-3/4 animate-pulse rounded-md bg-gray-light"></div>

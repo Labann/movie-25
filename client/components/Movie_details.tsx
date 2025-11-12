@@ -1,13 +1,26 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { IoLanguageOutline } from "react-icons/io5";
 import { LiaIconsSolid } from "react-icons/lia";
 import { TiStarHalf } from "react-icons/ti";
 import { GoStarFill } from "react-icons/go";
+import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
+import { fetchMovieDetails } from '@/app/store/movieSlice';
+import { generateGenreNames } from '@/app/util/destructureGenres';
 
 
-const Movie_details = () => {
+const Movie_details = ({movie_id}: {movie_id: string}) => {
+    const dispatch = useAppDispatch();
+    const {movie} = useAppSelector(state => state.movie);
+    useEffect(() => {
+        dispatch(fetchMovieDetails({movie_id}))
+    }, [movie_id, dispatch])
+    let genres;
+    if(movie && movie.genre_ids){
+         genres= generateGenreNames(movie?.genre_ids);
+    }
+    
   return (
     <div className="bg-primary py-10 p-4">
         <div className='mx-auto max-w-7xl'>
@@ -18,7 +31,7 @@ const Movie_details = () => {
                         <IoCalendarClearOutline className=' font-semibold'/>
                         <p className='capitalized'>Released Year</p>
                     </div>
-                    <p className='text-white font-extralight'>2014</p>
+                    <p className='text-white font-extralight'>{movie?.release_date.slice(0, 4)}</p>
                 </div>
                 <div className="flex flex-col space-y-3">
                     <div className="flex items-center space-x-2 text-gray-400 text-lg">
@@ -26,9 +39,8 @@ const Movie_details = () => {
                         <p className='capitalized'>Available languages</p>
                     </div>
                     <div className="flex items-center space-x-2 text-white">
-                        <button className='bg-black rounded-md px-2 py-1 cursor-pointer'>English</button>
-                        <button className='bg-black rounded-md px-2 py-1 cursor-pointer'>French</button>
-                        <button className='bg-black rounded-md px-2 py-1 cursor-pointer'>Spanish</button>
+                        {<button className='bg-black rounded-md px-2 py-1 cursor-pointer'>{movie?.original_language}</button>}
+                        
                     </div>
                 </div>
                 <div className="flex flex-col space-y-3">
@@ -37,8 +49,8 @@ const Movie_details = () => {
                         <p className='capitalized'>Genres</p>
                     </div>
                     <div className="flex items-center space-x-2 text-white">
-                        <button className='bg-black rounded-md px-2 py-1 cursor-pointer'>Romance</button>
-                        <button className='bg-black rounded-md px-2 py-1 cursor-pointer'>Drama</button>
+                        {genres?.map(genre => <button key={genre} className='bg-black rounded-md px-2 py-1 cursor-pointer'>{genre}</button>)}
+                        
                     </div>
                 </div>
                 <div className="flex flex-col space-y-3">
@@ -47,12 +59,8 @@ const Movie_details = () => {
                         <p className='capitalized'>Ratings</p>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <GoStarFill className='fill-amber-300'/>
-                        <GoStarFill className='fill-amber-300'/>
-                        <GoStarFill className='fill-amber-300'/>
-                        <GoStarFill className='fill-amber-300'/>
-                        <TiStarHalf className='fill-amber-300'/>
-                        <span className='text-white text-xs'>4.5</span>
+                        <span className='uppercase'>Popularity</span>
+                        <span className='text-white text-xs'>{movie?.popularity}</span>
                     </div>
                 </div>
 

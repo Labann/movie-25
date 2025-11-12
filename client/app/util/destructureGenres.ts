@@ -26,3 +26,9 @@ export function getGenreNames(genreIds: number[]): string {
     .filter(Boolean)              // remove any undefined entries
     .join(', ');                  // join with commas
 }
+
+export function generateGenreNames(genreIds: number[]): string[] {
+  return genreIds
+    .map(id => genreMap[id]) // convert each ID to its name
+    .filter((name): name is string => Boolean(name)); // keep only valid names
+}

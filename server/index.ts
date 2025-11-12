@@ -10,6 +10,7 @@ import movieRoute from "./routes/movie.js"
 import discoverRoute from "./routes/discover.js"
 import userRoutes from "./routes/user.js"
 import searchRoutes from "./routes/search.js";
+import personRoutes from "./routes/person.js";
 const app = express();
 
 app.use(cors({
@@ -65,6 +66,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/movie", movieRoute);
 app.use("/api/search", searchRoutes);
 app.use("/api/discover", discoverRoute);
+app.use("/api/person", personRoutes);
 app.listen(port, () => console.log(`app running on port: ${port}`));
 app.get("/", (req, res) => {
     res.send(`app running on port ${port}`);

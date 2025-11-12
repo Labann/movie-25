@@ -1,16 +1,17 @@
 import React from 'react'
 import Image from 'next/image'
+import { ImgUrl } from '@/app/util/config'
 
-const Actor = ({name}: {name: string}) => {
+const Actor = ({name, img}: {name: string, img: string}) => {
   return (
     <div className="w-[9em] p-2 flex-col text-center space-y-2">
-            <Image 
-              src={"/thumbnail.png"}
+            {img && <Image 
+              src={`${ImgUrl}/w-600/${img}`}
               alt='thumbnail'
               width={100}
               height={100}
               className='rounded-full w-[7em] h-[7em] mx-auto'
-              />          
+              />}          
               <p className='text-gray-light text-sm'>{name}</p>  
           </div>
   )

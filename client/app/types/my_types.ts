@@ -51,14 +51,19 @@ export interface IPerson {
     createdAt: number
     updatedAt: number
 }
-
 export interface IMovieCast{
-    id: number
-    movie: IMovie
-    movieId: string
-    person: IPerson
-    personId: number
-    role: string
+    adult: false,
+    gender: number,
+    id: number,
+    known_for_department: string,
+    name: string,
+    original_name: string,
+    popularity: number,
+    profile_path: string,
+    cast_id: number,
+    character: string,
+    credit_id: string,
+    order: number
 }
 
 export interface ISearchHistory{

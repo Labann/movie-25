@@ -4,7 +4,7 @@ import { FaPlay } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import { FaPlus } from "react-icons/fa6";
 import { IoIosShareAlt } from "react-icons/io";
-const Screen = () => {
+const Screen = ({movie_id}: {movie_id: string}) => {
   return (
     <div className='w-full relative pt-34 min-h-[70vh] bg-cover bg-center' style={{backgroundImage: "url('/bg_cover.jpg')"}}
     >

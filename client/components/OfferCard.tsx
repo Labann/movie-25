@@ -9,7 +9,7 @@ const OfferCard = ({title, img}: {title: string, img: string}) => {
             alt='card_img'
             width={250}
             height={250}
-            className='rounded-md h-[15em] object-fit hover:scale-105 cursor-pointer'
+            className='rounded-md h-[15em] object-fit object-contain hover:scale-105 cursor-pointer'
           />
           <div className="text-center text-gray-light font-bold py-3">{title}</div>
         </Link>
