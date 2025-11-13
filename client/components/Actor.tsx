@@ -6,7 +6,7 @@ import { IoIosContact } from "react-icons/io";
 export const ActorLoader = () => {
   return (
     <div className='w-[9em] p-1 h-[15em] mx-auto'>
-      <div className="bg-gray-light w-[7em] h-[7em] rounded-full animate-pulse"></div>
+      <div className="bg-gray-light w-[7em] h-[7em] rounded-full animate-pulse mx-auto"></div>
       <div className="w-3/4 mx-auto bg-gray-light mt-2 h-2 animate-pulse"></div>
       </div>
   )

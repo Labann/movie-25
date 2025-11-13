@@ -19,7 +19,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
             height={300}
             src={`${ImgUrl}w780${movie.poster_path}`}
             unoptimized
-            className='w-full object-fit rounded-md hover:scale-105 h-[20em]'
+            className='w-full object-fit rounded-md hover:scale-105 h-[20em] object-cover'
         />}
         <div className="flex flex-col space-y-6">
         <h1 className='capitalize text-lg md:text-5xl'>{movie.title}</h1>
