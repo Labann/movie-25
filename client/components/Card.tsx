@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ImgUrl } from '@/app/util/config';
 const Card = ({movie}: {movie: IMovie}) => {
   return (
-    <Link href={`/watch_screen/${movie.id}`} className='w-[17em] overflow-hidden'>
+    <Link href={`/watching_screen/${movie.id}`} className='w-[17em] overflow-hidden'>
         {movie.backdrop_path && <Image 
             src={`${ImgUrl}w780${movie?.poster_path}`}
             alt='card-img'
