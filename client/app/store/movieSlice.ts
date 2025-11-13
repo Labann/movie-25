@@ -32,7 +32,7 @@ export const fetchMovieDetails = createAsyncThunk<
     {rejectValue: string}
 >("/movie/details", async ({movie_id}, thunkApi) => {
     try {
-        const res = await fetch(`${ApiUrl}/api/movie/${movie_id}`, {
+        const res = await fetch(`${ApiUrl}/api/movie/details/${movie_id}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json"
