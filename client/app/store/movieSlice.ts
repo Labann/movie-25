@@ -6,8 +6,8 @@ import { ApiUrl } from "../util/config";
 interface IInitialState{
     movie: IMovie | null,
     movie_on_view: IMovie_on_view[]
-    trending: IMovie[] | null
-    popular: IMovie[]
+    trending: IMovie[] 
+    popular: IMovie[] 
     cast: IMovieCast[]
     isLoading: boolean,
     isError: boolean

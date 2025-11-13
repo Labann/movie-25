@@ -16,6 +16,8 @@ export interface IMovie_on_view{
     type: string,
     official: boolean
 }
+
+
 export interface IMovie{
     id: number
     title:  string
