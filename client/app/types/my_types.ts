@@ -8,6 +8,14 @@ export interface IUser{
     createdAt: number
 }
 
+
+export interface IMovie_on_view{
+    name: string,
+    key: string,
+    site: string,
+    type: string,
+    official: boolean
+}
 export interface IMovie{
     id: number
     title:  string

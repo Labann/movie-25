@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { ImgUrl } from '@/app/util/config'
-
+import { IoIosContact } from "react-icons/io";
 
 export const ActorLoader = () => {
   return (
@@ -21,7 +21,10 @@ const Actor = ({name, img}: {name: string, img: string}) => {
               width={100}
               height={100}
               className='rounded-full w-[7em] h-[7em] mx-auto'
-              />}          
+              />}
+              {
+                !img && <IoIosContact size={"4em"}/>
+              }          
               <p className='text-gray-light text-sm'>{name}</p>  
           </div>
   )

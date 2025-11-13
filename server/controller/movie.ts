@@ -116,3 +116,35 @@ export const fetchPopular: express.RequestHandler = async (req, res) => {
         })
     }
 }
+
+
+export const movie_on_view: express.RequestHandler = async (req, res) => {
+    const {movie_id} = req.params;
+    try {
+        if(!movie_id) return res.status(400).json({
+            error: "bad request"
+        })
+        const results = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${process.env.API_ACCESS_TOKEN}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                
+            },
+            credentials: "include"
+        })
+
+        const data = await results.json();
+
+         if(data.status_message){
+            throw Error(data.status_message);
+        }
+
+        return res.status(200).json(data);
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: (error as Error).message
+        })
+    }
+}

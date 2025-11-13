@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { IMovie, IMovieCast } from "../types/my_types";
+import { IMovie, IMovie_on_view, IMovieCast } from "../types/my_types";
 import { ApiUrl } from "../util/config";
 
 
 interface IInitialState{
     movie: IMovie | null,
+    movie_on_view: IMovie_on_view | null
     trending: IMovie[] | null
     popular: IMovie[]
     cast: IMovieCast[]
@@ -15,6 +16,7 @@ interface IInitialState{
 }
 const initialState: IInitialState = {
     movie: null,
+    movie_on_view: null,
     trending: [],
     cast: [],
     popular: [],
@@ -132,6 +134,34 @@ export const fetchPopular = createAsyncThunk<
         return thunkApi.rejectWithValue((error as Error).message)
     }
 })
+
+export const fetch_movie_on_view = createAsyncThunk<
+    {id: number, results: IMovie_on_view},    
+    {movie_id: string},
+    {rejectValue: string}
+>("/movie/movie_on_view",  async ({movie_id}, thunkApi) => {
+    try {
+        const res = await fetch(`${ApiUrl}/api/movie/on_view/${movie_id}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            },
+            credentials: "include"
+        })
+
+        const data = await res.json();
+
+        if(res.status !== 200){
+            return thunkApi.rejectWithValue(data.error);
+        }
+
+        return data;
+    } catch (error) {
+        console.error(error);
+        return thunkApi.rejectWithValue((error as Error).message);
+    }
+})
+
 const movieSlice = createSlice({
     name: "movie",
     initialState: initialState,
@@ -197,6 +227,20 @@ const movieSlice = createSlice({
                 state.trending = action.payload.results
             })
             .addCase(fetchPopular.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload as string
+            })
+
+            .addCase(fetch_movie_on_view.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(fetch_movie_on_view.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.movie_on_view = action.payload.results
+            })
+            .addCase(fetch_movie_on_view.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload as string
