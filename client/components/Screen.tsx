@@ -17,6 +17,7 @@ const Screen = ({movie_id}: {movie_id: string}) => {
         
         <ReactPlayer
           width={'100%'}
+          height={"100%"}
           className='max-w-7xl mx-auto rounded-md'
           controls={true}
           playing={true}

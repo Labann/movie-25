@@ -5,7 +5,7 @@ import { IoIosContact } from "react-icons/io";
 
 export const ActorLoader = () => {
   return (
-    <div className='w-[9em] p-1 h-[15em]'>
+    <div className='w-[9em] p-1 h-[15em] mx-auto'>
       <div className="bg-gray-light w-[7em] h-[7em] rounded-full animate-pulse"></div>
       <div className="w-3/4 mx-auto bg-gray-light mt-2 h-2 animate-pulse"></div>
       </div>
@@ -23,7 +23,7 @@ const Actor = ({name, img}: {name: string, img: string}) => {
               className='rounded-full w-[7em] h-[7em] mx-auto'
               />}
               {
-                !img && <IoIosContact size={"4em"}/>
+                !img && <IoIosContact size={"4em"} className='mx-auto w-[7em] h-[7em] rounded-full'/>
               }          
               <p className='text-gray-light text-sm'>{name}</p>  
           </div>
