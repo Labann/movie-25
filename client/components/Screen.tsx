@@ -17,8 +17,8 @@ const Screen = ({movie_id}: {movie_id: string}) => {
         
         <ReactPlayer
           width={'100%'}
-          
-          className='max-w-7xl mx-auto rounded-md h-[50vh]'
+          height={"100%"}
+          className='mx-auto'
           controls={true}
           playing={true}
           src={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
