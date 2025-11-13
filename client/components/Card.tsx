@@ -8,7 +8,7 @@ const Card = ({movie}: {movie: IMovie}) => {
   return (
     <Link href={`/watch_screen/${movie.id}`} className='w-[17em] overflow-hidden'>
         {movie.backdrop_path && <Image 
-            src={`${ImgUrl}w780${movie?.backdrop_path}`}
+            src={`${ImgUrl}w780${movie?.poster_path}`}
             alt='card-img'
             width={200}
             height={200}
@@ -27,7 +27,7 @@ const Card = ({movie}: {movie: IMovie}) => {
 
 export const CardLoader = () => {
   return (
-    <div className='w-17'>
+    <div className='w-[17em]'>
       <div className="h-[12em] bg-gray-light animate-pulse"></div>
       <div className="pt-4 flex flex-col space-y-3">
         <div className="w-1/4 h-4 bg-gray-light animate-pulse"></div>
