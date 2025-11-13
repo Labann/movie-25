@@ -111,7 +111,7 @@ export const movie_on_view = async (req, res) => {
             method: "GET",
             headers: {
                 "Content-type": "application/json",
-                "Authorization": `${process.env.API_ACCESS_TOKEN}`
+                "Authorization": `Bearer ${process.env.API_ACCESS_TOKEN}`
             },
             credentials: "include"
         });
