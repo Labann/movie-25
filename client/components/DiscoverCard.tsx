@@ -49,7 +49,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
 
 export const DiscoverCardLoader = () => {
     return (
-        <div className='bg-gray-neutral rounded-md max-w-xl p-3'>
+        <div className='bg-gray-neutral rounded-md max-w-xl p-3 min-w-md'>
             <div className="h-[30em] bg-gray-light animate-pulse w-full rounded-md"></div>
             <div className="flex flex-col space-y-3 py-3">
                 <div className="h-3 w-1/4 animate-pulse rounded-md bg-gray-light"></div>
