@@ -1,13 +1,18 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card, { CardLoader } from './Card'
-import { useAppSelector } from '@/app/hooks/redux'
+import { useAppDispatch, useAppSelector } from '@/app/hooks/redux'
+import { fetchPopular, fetchTrending } from '@/app/store/movieSlice'
 
 const SlideShow = ({title}: {
   title: string
 }) => {
   const {trending, popular, isLoading} = useAppSelector(state => state.movie);
-  
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchTrending());
+    dispatch(fetchPopular())
+  }, [dispatch])
   return (
     <div className='p-4 max-w-7xl mx-auto pb-14 pt-6'>
         <h3 className='font-bold text-2xl text-white capitalize pb-2'>{title}</h3>

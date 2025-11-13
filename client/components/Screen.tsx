@@ -31,7 +31,7 @@ const Screen = ({movie_id}: {movie_id: string}) => {
         <div className="max-w-lg mx-auto">
             <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
-                controls
+                controls={true}
                 width="100%"
                 height="100%"
                 />
