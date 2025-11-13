@@ -13,7 +13,7 @@ const Card = ({movie}: {movie: IMovie}) => {
             width={200}
             height={200}
             unoptimized
-            className='rounded-md h-[12em] w-full object-fit object-cover'
+            className='rounded-md h-[12em] w-full object-fit object-cover hover:scale-105 overflow-hidden'
         />}
         <div className="flex justify-between items-center py-3 text-gray-light">
             <h5 className='uppercase text-xs'>{movie.original_title}</h5>

@@ -56,7 +56,7 @@ export const fetchMovieCast = async (req, res) => {
 };
 export const fetchTrending = async (req, res) => {
     try {
-        const result = await fetch(`https://api.themoviedb.org/3/trending/all/day?language=en-US`, {
+        const result = await fetch(`https://api.themoviedb.org/3/trending/movie/day?language=en-US`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json",
