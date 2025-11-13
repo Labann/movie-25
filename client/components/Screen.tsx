@@ -11,7 +11,7 @@ const Screen = ({movie_id}: {movie_id: string}) => {
         dispatch(fetch_movie_on_view({movie_id}))
     }, [movie_id, dispatch])
     return (
-    <div className='w-full relative pt-34 min-h-[70vh] bg-cover bg-center' style={{backgroundImage: `url(${ImgUrl}w700${movie?.poster_path})`}}
+    <div className='w-full relative pt-34 p-4 min-h-[70vh] bg-cover bg-center' style={{backgroundImage: `url(${ImgUrl}w700${movie?.poster_path})`}}
     >
         <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-5"></div>
         
