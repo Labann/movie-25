@@ -224,7 +224,7 @@ const movieSlice = createSlice({
             .addCase(fetchPopular.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.trending = action.payload.results
+                state.popular = action.payload.results
             })
             .addCase(fetchPopular.rejected, (state, action) => {
                 state.isLoading = false
