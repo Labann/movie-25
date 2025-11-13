@@ -15,7 +15,7 @@ const Screen = ({movie_id}: {movie_id: string}) => {
     >
         <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-5"></div>
         
-        <ReactPlayer src={`https://www.youtube.com/watch?v=${movie_on_view?.key}`} controls />
+        <ReactPlayer className='w-full max-w-7xl mx-auto' src={`https://www.youtube.com/watch?v=${movie_on_view?.key}`} controls />
         
     </div>
   )
