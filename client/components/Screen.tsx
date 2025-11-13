@@ -36,7 +36,7 @@ const Screen = ({movie_id}: {movie_id: string}) => {
                     >
             <ReactPlayer
                 slot="media"
-                src="https://stream.mux.com/maVbJv2GSYNRgS02kPXOOGdJMWGU1mkA019ZUjYE7VU7k"
+                src={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
                 controls={false}
                 style={{
                 width: "100%",
