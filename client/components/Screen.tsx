@@ -12,6 +12,7 @@ const ReactPlayer = dynamic(() => import("react-player"), {
 }) as unknown as React.FC<{
   url: string;
   controls?: boolean;
+  playing?: boolean
   width?: string;
   height?: string;
 }>;
@@ -28,14 +29,13 @@ const Screen = ({movie_id}: {movie_id: string}) => {
         style={{backgroundImage: `url(${ImgUrl}w700${movie?.poster_path})`}}
     >
         <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-5"></div>
-        <div className="max-w-lg mx-auto">
             <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
+                width={'100%'}
                 controls={true}
-                width="100%"
-                height="100%"
-                />
-        </div>
+                playing={true}
+                url={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
+        />
+        
     </div>
   )
 }
