@@ -79,7 +79,7 @@ export const fetchTrending = async (req, res) => {
 };
 export const fetchPopular = async (req, res) => {
     try {
-        const result = await fetch(`'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`, {
+        const result = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json",
