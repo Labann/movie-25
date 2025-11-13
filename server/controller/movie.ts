@@ -124,11 +124,11 @@ export const movie_on_view: express.RequestHandler = async (req, res) => {
         if(!movie_id) return res.status(400).json({
             error: "bad request"
         })
-        const results = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${process.env.API_ACCESS_TOKEN}`, {
+        const results = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}/videos?language=en-U`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json",
-                "Authorization": `${process.env.API_ACCESS_TOKEN}`
+                "Authorization": `${process.env.API_ACCESS_TOKEN!}`
             },
             credentials: "include"
         })
