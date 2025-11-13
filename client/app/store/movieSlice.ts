@@ -5,7 +5,7 @@ import { ApiUrl } from "../util/config";
 
 interface IInitialState{
     movie: IMovie | null,
-    movie_on_view: IMovie_on_view | null
+    movie_on_view: IMovie_on_view[]
     trending: IMovie[] | null
     popular: IMovie[]
     cast: IMovieCast[]
@@ -16,7 +16,7 @@ interface IInitialState{
 }
 const initialState: IInitialState = {
     movie: null,
-    movie_on_view: null,
+    movie_on_view: [],
     trending: [],
     cast: [],
     popular: [],
@@ -136,7 +136,7 @@ export const fetchPopular = createAsyncThunk<
 })
 
 export const fetch_movie_on_view = createAsyncThunk<
-    {id: number, results: IMovie_on_view},    
+    {id: number, results: IMovie_on_view[]},    
     {movie_id: string},
     {rejectValue: string}
 >("/movie/movie_on_view",  async ({movie_id}, thunkApi) => {
