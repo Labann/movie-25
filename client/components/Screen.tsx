@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 const ReactPlayer = dynamic(() => import("react-player"), {
   ssr: false,
 }) as unknown as React.FC<{
-  src: string;
+  url: string;
   controls?: boolean;
   playing?: boolean
   width?: string;
@@ -37,9 +37,8 @@ const Screen = ({movie_id}: {movie_id: string}) => {
                     controls={true}
                     playing={true}
                     className='w-fit border border-gray-light rounded-md'
-                    src={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
+                    url={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
                 />
-            
         </div>
     </div>
   )
