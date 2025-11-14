@@ -43,8 +43,7 @@ const Movie_details = ({movie_id}: {movie_id: string}) => {
                         <p className='capitalized'>Genres</p>
                     </div>
                     <div className="flex items-center flex-wrap space-y-2 space-x-2 text-white">
-                        {movie?.genres?.map(genre => <button key={genre.id} className='bg-black rounded-md px-2 py-1 cursor-pointer'>{genre.name}</button>)}
-                        
+                        {movie?.genres?.map(genre => <span key={genre.id} className='bg-black rounded-md px-2 py-1 cursor-pointer'>{genre.name}</span>)}
                     </div>
                 </div>
                 <div className="flex flex-col space-y-3">
