@@ -11,7 +11,7 @@ const SearchInput = () => {
     dispatch(search_fn({query}))
   }, [dispatch, query])
   return (
-    <div className="text-white max-w-7xl mx-auto flex justify-center items-center">
+    <div className="text-white max-w-7xl mx-auto flex flex-col space-y-2 justify-center items-center">
         <div className="relative sm:w-lg w-sm">
             <input type="text" onChange={(e) => setQuery(e.target.value)} name='query' value={query} placeholder='Search' className='w-full pl-8 relative rounded-md p-4 bg-gray-extrabold'/>
             <IoSearchSharp size={"1.2em"} className='absolute top-5 left-2 cursor-pointer'/>
