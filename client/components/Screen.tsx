@@ -39,29 +39,8 @@ const Screen = ({movie_id}: {movie_id: string}) => {
                     className='w-fit border border-gray-light rounded-md'
                     url={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
                 />
-                 <span className="flex text-gray-light items-center space-x-2">
-              <h3 className="text-sm  ">Movie title: </h3>
-              <h1 className="text-4xl ">{movie?.original_title}</h1>
-          </span>
-        <span className="flex items-center space-x-2 text-gray-light"git>
-            <h3 className="text-sm  text-gray-light">Genres: </h3>
-            <span className="flex items-center space-x-4">
-                {movie?.genres?.map(genre => <h1 className="text-3xl " key={genre.id}>{genre?.name}</h1>)}
-            </span>
-        </span>
-        <span className="flex flex-col space-x-2 text-gray-light">
-            <h3 className="text-sm  text-gray-light">Overview: </h3>
-            <span className="text-3xl font-extralight text-white">
-                {movie?.overview}
-            </span>
-        </span>
-        <span className="flex items-center text-2xl text-slate-300 space-x-4">
-            {movie?.adult? <p className="">PG 13 ||</p>: <p>PG 18 ||</p>} 
-            <p>{movie?.release_date}</p>                        
-        </span>
-            </div>
             
-        
+        </div>
     </div>
   )
 }

@@ -1,9 +1,8 @@
 "use client"
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { IoLanguageOutline } from "react-icons/io5";
 import { LiaIconsSolid } from "react-icons/lia";
-import { TiStarHalf } from "react-icons/ti";
 import { GoStarFill } from "react-icons/go";
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { fetchMovieDetails } from '@/app/store/movieSlice';
@@ -49,7 +48,7 @@ const Movie_details = ({movie_id}: {movie_id: string}) => {
                         <p className='capitalized'>Genres</p>
                     </div>
                     <div className="flex items-center space-x-2 text-white">
-                        {genres?.map(genre => <button key={genre} className='bg-black rounded-md px-2 py-1 cursor-pointer'>{genre}</button>)}
+                        {movie?.genres?.map(genre => <button key={genre.id} className='bg-black rounded-md px-2 py-1 cursor-pointer'>{genre.name}</button>)}
                         
                     </div>
                 </div>
