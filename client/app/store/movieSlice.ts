@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IMovie, IMovie_on_view, IMovieCast, IReview } from "../types/my_types";
 import { ApiUrl } from "../util/config";
+import { escape } from "querystring";
 
 const initialMovie = {
         "adult": false,
@@ -36,6 +37,7 @@ interface IInitialState{
     popular: IMovie[] 
     recommendations: IMovie[]
     cast: IMovieCast[]
+    search_results: IMovie[]
     isLoading: boolean,
     isError: boolean
     isSuccess: boolean
@@ -47,6 +49,7 @@ const initialState: IInitialState = {
     reviews: [],
     trending: [],
     recommendations: [],
+    search_results: [],
     cast: [],
     popular: [],
     isLoading: false,
@@ -245,6 +248,33 @@ export const fetch_recommendations = createAsyncThunk<
         return thunkApI.rejectWithValue((error as Error).message)
     }
 })
+
+
+export const search_fn = createAsyncThunk<
+    {page: number, results: IMovie[]},
+    {query: string},
+    {rejectValue: string}
+>("/movie/search", async ({query}, thunkApi) => {
+    try {
+        const res = await fetch(`${ApiUrl}/api/search/${query}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        });
+
+        const data = await res.json();
+
+        if(res.status !== 200){
+            return thunkApi.rejectWithValue(data.error);
+        }
+
+        return data;
+    } catch (error) {
+        console.error(error);
+        return thunkApi.rejectWithValue((error as Error).message)
+    }
+})
 const movieSlice = createSlice({
     name: "movie",
     initialState: initialState,
@@ -353,6 +383,20 @@ const movieSlice = createSlice({
                 state.recommendations = action.payload.results
             })
             .addCase(fetch_recommendations.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload as string
+            })
+
+            .addCase(search_fn.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(search_fn.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.search_results = action.payload.results
+            })
+            .addCase(search_fn.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload as string

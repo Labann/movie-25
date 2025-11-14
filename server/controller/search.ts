@@ -16,6 +16,7 @@ export const search: express.RequestHandler = async (req, res) => {
             }
         })
         const data = await response.json();
+        
         if(data.status_message){
             throw Error(data.status_message);
         }
