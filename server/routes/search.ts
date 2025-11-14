@@ -6,5 +6,5 @@ import { search } from "../controller/search.js";
 const router = express.Router();
 
 
-router.get("/:query", protect, search);
+router.get("/:query", search);
 export default router;
