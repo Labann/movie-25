@@ -5,7 +5,7 @@ import { useAppSelector } from '@/app/hooks/redux'
 const Actors = ({title}: {title: string}) => {
   const {cast, isLoading} = useAppSelector(state => state.movie);
   return (
-    <div className='max-w-7xl mx-auto pb-14 pt-3'>
+    <div className='max-w-7xl mx-auto pb-14 p-4 pt-3'>
       <h3 className='text-2xl text-white capitalize'>{title}</h3>
       <div className="md:w-[80vw] w-fit overflow-x-scroll scroll-none mx-auto">
         <div className="flex items-center pt-3 space-x-3 w-fit">

@@ -17,8 +17,7 @@ const Reviews = ({movie_id}:{
         <div className="grid grid-cols-2 scroll-none gap-3 space-x-3 pt-4 overflow-x-scroll">
             {reviews.length === 0 && <p className='font-bold text-sm'>no reviews</p>}
             {reviews.length !== 0 && reviews.map(review => <Review key={review.id} review={review}/>)}
-        </div>
-        
+        </div>    
     </div>
   )
 }
