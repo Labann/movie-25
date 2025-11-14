@@ -21,7 +21,7 @@ const Navbar = () => {
             />
         </Link>
         {
-          currentUser && (
+          
             <div className="md:flex hidden items-center mx-auto space-x-6 text-lg text-white">
               <Link href={"/home"}  className="flex space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
                 <CiHome size={"1.2em"}/>
@@ -31,12 +31,12 @@ const Navbar = () => {
                 <IoIosSearch size={"1.2em"}/>
                 <span>Search</span>
               </Link>
-              <Link href={"/watch_list"} className="flex space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
+              {currentUser && <Link href={"/watch_list"} className="flex space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
                 <FaPlus size={"1.2em"}/>
                 <span>Watchlist</span>
-              </Link>
+              </Link>}
             </div>
-          )
+          
         }
         {
           currentUser && (
