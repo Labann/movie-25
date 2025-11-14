@@ -42,7 +42,7 @@ const Movie_details = ({movie_id}: {movie_id: string}) => {
                         <LiaIconsSolid className=' font-semibold'/>
                         <p className='capitalized'>Genres</p>
                     </div>
-                    <div className="flex items-center space-x-2 text-white">
+                    <div className="flex items-center flex-wrap space-y-2 space-x-2 text-white">
                         {movie?.genres?.map(genre => <button key={genre.id} className='bg-black rounded-md px-2 py-1 cursor-pointer'>{genre.name}</button>)}
                         
                     </div>
