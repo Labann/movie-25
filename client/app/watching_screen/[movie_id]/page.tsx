@@ -20,7 +20,7 @@ const Watching_screen = () => {
         <Screen movie_id={movie_id}/> 
         <Movie_details movie_id={movie_id}/>
         <Actors title='Top Cast'/>
-        <Reviews/>
+        <Reviews movie_id={movie_id}/>
     </div>
   )
 }

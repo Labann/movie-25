@@ -36,7 +36,7 @@ const Screen = ({movie_id}: {movie_id: string}) => {
                     height='100%'
                     controls={true}
                     playing={true}
-                    className='w-fit border border-gray-light rounded-md z-10'
+                    className='w-fit border border-gray-light rounded-md z-10 overflow-hidden'
                     src={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
                 />
         </div>
