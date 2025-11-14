@@ -34,7 +34,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
             <GoDotFill/>
             <p>{formatRuntimeSafe(movie.runtime)}</p>
         </div>
-        <div className="overflow-y-auto max-h-[10em] scroll-none">
+        <div className="overflow-y-scroll max-h-[10em] scroll-none">
             <p className='text-gray-300 text-md'>{movie.overview}</p>
         </div>
         <div className="pt-4 flex space-x-3 items-center">
