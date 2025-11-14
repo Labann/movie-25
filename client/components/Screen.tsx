@@ -19,11 +19,11 @@ const ReactPlayer = dynamic(() => import("react-player"), {
 }>;
 
 
-const Screen = ({movie_id}: {movie_id: number}) => {
+const Screen = ({movie_id}: {movie_id: string}) => {
     const {movie, movie_on_view} = useAppSelector(state => state.movie);
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch(fetch_movie_on_view({movie_id}))
+        dispatch(fetch_movie_on_view({movie_id: parseInt(movie_id)}))
     }, [movie_id, dispatch])
     return (
     <div className='w-full relative md:pt-34 pt-24 p-4 md:min-h-[70vh] min-h-[50vh] bg-cover bg-center' 

@@ -9,7 +9,6 @@ const Review = ({review}: {review: IReview}) => {
         <div className="flex items-center justify-between">
             <div className="flex flex-col space-y-1">
                 <p>{review.author}</p>
-                <p className='text-gray-300'>{review.author_details.username}</p>
             </div>
             <button className='border border-white p-2 rounded-2xl flex items-center space-x-2'>
                 <p className='text-gray-light text-sm'>Rating</p>

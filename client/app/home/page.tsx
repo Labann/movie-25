@@ -16,7 +16,7 @@ const Home = () => {
   const {movie} = useAppSelector(state => state.movie)
   return (
     <div className="pt-30 bg-primary min-h-screen">
-        <Screen movie_id={movie.id}/>
+        <Screen movie_id={String(movie.id)}/>
         <SlideShow title='Popular searches' movie_id={movie.id}/>
         <SlideShow title='Trending' movie_id={movie.id}/>    
         <Actors title={"Most Famous actor globally"} />

@@ -165,7 +165,7 @@ export const fetchPopular = createAsyncThunk<
 })
 
 export const fetch_movie_on_view = createAsyncThunk<
-    {id: number, results: IMovie_on_view[]},    
+    {id: string, results: IMovie_on_view[]},    
     {movie_id: number},
     {rejectValue: string}
 >("/movie/movie_on_view",  async ({movie_id}, thunkApi) => {

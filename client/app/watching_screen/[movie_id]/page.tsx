@@ -17,7 +17,7 @@ const Watching_screen = () => {
   }, [movie_id, dispatch])
   return (
     <div className='bg-primary'>
-        <Screen movie_id={parseInt(movie_id)}/> 
+        <Screen movie_id={movie_id}/> 
         <Movie_details movie_id={movie_id}/>
         <Actors title='Top Cast'/>
         <Reviews movie_id={movie_id}/>
