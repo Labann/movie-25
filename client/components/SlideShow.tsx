@@ -14,8 +14,8 @@ const SlideShow = ({title}: {
     dispatch(fetchPopular())
   }, [dispatch])
   return (
-    <div className='p-4 max-w-7xl mx-auto py-6'>
-        <h3 className='font-bold text-2xl text-white capitalize pb-2'>{title}</h3>
+    <div className='p-4 max-w-7xl mx-auto py-2'>
+        <h3 className='font-bold text-lg text-white capitalize pb-2'>{title}</h3>
         <div className="overflow-x-scroll scroll-none w-[80w] mx-auto">
             <div className="flex items-center space-x-4 w-fit">
                 {isLoading && ["1", 2, 3, 4, 6, 7].map(item => <CardLoader key={item}/>)}
