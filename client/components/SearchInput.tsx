@@ -10,7 +10,7 @@ const SearchInput = () => {
   useEffect(() => {
     const delay = setTimeout(() => {
       dispatch(search_fn({query}))
-    }, 2000)
+    }, 500)
     return () => {
       clearTimeout(delay)
     }
