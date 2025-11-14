@@ -17,8 +17,8 @@ const Review = ({review}: {review: IReview}) => {
             </button>
             
         </div>
-        <div className="h-[15em] w-full overflow-y-scroll scroll-none border-r border-gray-light">
-            <p className='p-1 text-gray-300'>
+        <div className="h-[15em] w-full overflow-y-scroll scroll-none border-x border-gray-light">
+            <p className='p-1 text-gray-300 text-sm'>
                 {review.content}
             </p>
         </div>
