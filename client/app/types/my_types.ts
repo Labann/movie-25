@@ -33,6 +33,7 @@ export interface IMovie{
     adult: boolean
     video: boolean
     genre_ids: [number]
+    genres: [{id: number, name: string}]
     media_type: string
     cast: IMovieCast[]
     searchHistory: ISearchHistory
