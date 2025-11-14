@@ -18,6 +18,12 @@ export interface IMovie_on_view{
 }
 
 
+
+export interface genre {
+    id: number,
+    name: string
+}
+
 export interface IMovie{
     id: number
     title:  string
@@ -27,19 +33,19 @@ export interface IMovie{
     backdrop_path?: string,
     original_language:  string
     release_date: string
-    popularity: string
-    vote_average: string
-    vote_count: string
+    popularity: number
+    vote_average: number
+    vote_count: number
     adult: boolean
     video: boolean
-    genre_ids: [number]
-    genres: [{id: number, name: string}]
-    media_type: string
+    genre_ids: number[]
+    genres: genre[]
+    media_type?: string
     cast: IMovieCast[]
-    searchHistory: ISearchHistory
+    searchHistory?: ISearchHistory
     runtime?: number;
-    createdAt: number
-    updatedAt: number
+    createdAt?: number
+    updatedAt?: number
 }
 
 export interface IPerson {

@@ -19,7 +19,7 @@ const ReactPlayer = dynamic(() => import("react-player"), {
 }>;
 
 
-const Screen = ({movie_id}: {movie_id: string}) => {
+const Screen = ({movie_id}: {movie_id: number}) => {
     const {movie, movie_on_view} = useAppSelector(state => state.movie);
     const dispatch = useAppDispatch();
     useEffect(() => {

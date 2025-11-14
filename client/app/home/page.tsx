@@ -5,16 +5,17 @@ import { Slider } from '@/components/Carousel'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { fetchFamousActors } from '../store/personSlice'
 import Actor, { ActorLoader } from '@/components/Actor'
-
+import Screen from '@/components/Screen'
 const Home = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchFamousActors())
   }, [dispatch])
   const {person, isLoading} = useAppSelector(state => state.person);
+  const {movie} = useAppSelector(state => state.movie)
   return (
     <div className="pt-30 bg-primary min-h-screen">
-        <Slider />
+        <Screen movie_id={movie.id}/>
         <SlideShow title='Popular searches'/>
         <SlideShow title='Trending'/>
         

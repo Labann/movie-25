@@ -2,9 +2,34 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IMovie, IMovie_on_view, IMovieCast, IReview } from "../types/my_types";
 import { ApiUrl } from "../util/config";
 
-
+const initialMovie = {
+        "adult": false,
+            "backdrop_path": "/G3vrVlsqsNPSYvyoG2lTRxVGom.jpg",
+            "genres": [
+                {
+                "id": 99,
+                "name": "Documentary"
+                }
+            ],
+            genre_ids: [99],
+            cast: [],
+            "id": 685264,
+            "original_language": "en",
+            "original_title": "Pray Away",
+            "overview": "In the 1970s, five men struggling with being gay in their Evangelical church started a bible study to help each other leave the \"homosexual lifestyle.\" They quickly received over 25,000 letters from people asking for help and formalized as Exodus International, the largest and most controversial conversion therapy organization in the world. But leaders struggled with a secret: their own “same-sex attractions” never went away. After years as Christian superstars in the religious right, many of these men and women have come out as LGBTQ, disavowing the very movement they helped start. Focusing on the dramatic journeys of former conversion therapy leaders, current members, and a survivor, PRAY AWAY chronicles the “ex gay\" movement’s rise to power, persistent influence, and the profound harm it causes.",
+            "popularity": 18.4342,
+            "poster_path": "/1wikrtZZZoThwnHulB7klQek4Ai.jpg",
+            
+            "release_date": "2021-06-16",
+            "runtime": 101,
+            "title": "Pray Away",
+            "video": false,
+            "vote_average": 6.682,
+            "vote_count": 99,
+            
+    }
 interface IInitialState{
-    movie: IMovie | null,
+    movie: IMovie 
     movie_on_view: IMovie_on_view[]
     trending: IMovie[] 
     reviews: IReview[]
@@ -16,7 +41,7 @@ interface IInitialState{
     message: string
 }
 const initialState: IInitialState = {
-    movie: null,
+    movie:initialMovie,
     movie_on_view: [],
     reviews: [],
     trending: [],
@@ -139,7 +164,7 @@ export const fetchPopular = createAsyncThunk<
 
 export const fetch_movie_on_view = createAsyncThunk<
     {id: number, results: IMovie_on_view[]},    
-    {movie_id: string},
+    {movie_id: number},
     {rejectValue: string}
 >("/movie/movie_on_view",  async ({movie_id}, thunkApi) => {
     try {
@@ -196,7 +221,7 @@ const movieSlice = createSlice({
     initialState: initialState,
     reducers: {
         reset: (state) => {
-            state.movie = null
+            state.movie = initialMovie,
             state.isLoading = false
             state.isError = false
             state.isSuccess = false
