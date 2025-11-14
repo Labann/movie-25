@@ -17,10 +17,10 @@ const Home = () => {
   return (
     <div className="pt-30 bg-primary min-h-screen">
         <Screen movie_id={movie.id}/>
-        <SlideShow title='Popular searches'/>
-        <SlideShow title='Trending'/>    
-        <Actors title={"Most Famous actor globally"}/>
-        <SlideShow title='Recommended For you'/>
+        <SlideShow title='Popular searches' movie_id={movie.id}/>
+        <SlideShow title='Trending' movie_id={movie.id}/>    
+        <Actors title={"Most Famous actor globally"} />
+        <SlideShow title='Recommended For you' movie_id={movie.id}/>
     </div>
   )
 }

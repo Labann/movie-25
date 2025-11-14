@@ -2,17 +2,18 @@
 import React, { useEffect } from 'react'
 import Card, { CardLoader } from './Card'
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux'
-import { fetchPopular, fetchTrending } from '@/app/store/movieSlice'
+import { fetch_recommendations, fetchPopular, fetchTrending } from '@/app/store/movieSlice'
 
-const SlideShow = ({title}: {
-  title: string
+const SlideShow = ({title, movie_id}: {
+  title: string, movie_id: number
 }) => {
-  const {trending, popular, isLoading} = useAppSelector(state => state.movie);
+  const {trending, popular, isLoading, recommendations} = useAppSelector(state => state.movie);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchTrending());
-    dispatch(fetchPopular())
-  }, [dispatch])
+    dispatch(fetchPopular());
+    dispatch(fetch_recommendations({movie_id}))
+  }, [dispatch, movie_id])
   return (
     <div className='p-4 max-w-7xl mx-auto pt-6'>
         <h3 className='font-bold text-lg text-white capitalize pb-2'>{title}</h3>
@@ -21,6 +22,7 @@ const SlideShow = ({title}: {
                 {isLoading && ["1", 2, 3, 4, 6, 7].map(item => <CardLoader key={item}/>)}
                 {!isLoading && title === "Trending" && trending?.map(movie => <Card key={movie.id} movie={movie}/>)}
                 {!isLoading && title === "Popular searches" && popular?.map(movie => <Card key={movie.id} movie={movie}/>)}
+                {!isLoading && title === "Recommended For you" && recommendations?.map(movie => <Card key={movie.id} movie={movie}/>)}
             </div>
         </div>
     </div>
