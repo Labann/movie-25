@@ -221,7 +221,7 @@ const movieSlice = createSlice({
     initialState: initialState,
     reducers: {
         reset: (state) => {
-            state.movie = initialMovie,
+            state.movie = initialMovie
             state.isLoading = false
             state.isError = false
             state.isSuccess = false
