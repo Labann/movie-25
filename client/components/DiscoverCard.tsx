@@ -25,7 +25,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
         </div>
         
         <div className="flex flex-col space-y-6">
-        <h1 className='capitalize text-lg md:text-5xl'>{movie.title}</h1>
+        <h1 className='capitalize text-lg text-gray-light'>{movie.title}</h1>
         <div className="flex space-x-2 font-bold items-center text-xs">
             <button className='border-white border p-1 cursor-pointer'>{movie?.adult? "PG-18": "PG-13"}</button>
             <p>{movie.createdAt}</p>
@@ -34,7 +34,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
             <GoDotFill/>
             <p>{formatRuntimeSafe(movie.runtime)}</p>
         </div>
-        <div className="overflow-y-auto h-[10em] scroll-none">
+        <div className="overflow-y-auto max-h-[10em] scroll-none">
             <p className='text-gray-300 text-md'>{movie.overview}</p>
         </div>
         <div className="pt-4 flex space-x-3 items-center">
