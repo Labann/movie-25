@@ -16,7 +16,7 @@ const Movie_details = ({movie_id}: {movie_id: string}) => {
     }, [movie_id, dispatch])
    
   return (
-    <div className="bg-primary py-10">
+    <div className="bg-primary py-4">
         <div className='mx-auto max-w-7xl p-4'>
             <h3 className='text-gray-semibold'>More details</h3>
             <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-3">
