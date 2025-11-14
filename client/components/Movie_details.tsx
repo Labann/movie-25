@@ -19,7 +19,7 @@ const Movie_details = ({movie_id}: {movie_id: string}) => {
     <div className="bg-primary py-10 p-4">
         <div className='mx-auto max-w-7xl'>
             <h3 className='text-gray-semibold'>More details</h3>
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3">
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-3">
                 <div className="flex flex-col space-y-3">
                     <div className="flex items-center space-x-2 text-gray-400 text-lg">
                         <IoCalendarClearOutline className=' font-semibold'/>
