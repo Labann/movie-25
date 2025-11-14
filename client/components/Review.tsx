@@ -12,12 +12,12 @@ const Review = ({review}: {review: IReview}) => {
                 <p className='text-gray-300'>{review.author_details.username}</p>
             </div>
             <button className='border border-white p-2 rounded-2xl flex items-center space-x-2'>
-                <GoStarFill size={".6em"} className='fill-yellow-200/80'/>
+                <p className='text-gray-light'>Rating</p>
                 <p className='text-xs text-white'>{review.author_details.rating}</p>
             </button>
             
         </div>
-        <div className="h-[20em] w-full overflow-y-scroll scroll-none">
+        <div className="h-[20em] w-full overflow-y-scroll scroll-none border-r border-gray-light">
             <p className='p-1 text-gray-300'>
                 {review.content}
             </p>
