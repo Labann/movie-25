@@ -52,7 +52,8 @@ const Movie_details = ({movie_id}: {movie_id: string}) => {
                         <p className='capitalized'>Popularity</p>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <span className='text-white text-xs'>{movie?.popularity}</span>
+                        <span className='text-xs text-gray-light'>rating</span>
+                        <span className='text-white text-sm'>{movie?.popularity}</span>
                     </div>
                 </div>
 
