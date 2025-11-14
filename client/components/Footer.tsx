@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 const Footer = () => {
   return (
-    <div className="p-4  bg-primary py-10">
+    <div className="p-4  bg-primary py-6">
         <div className='grid max-w-7xl gap-6 p-4 md:grid-cols-4 grid-cols-2 sm:grid-cols-3 w-fit md:w-auto mx-auto'>
             <div className="flex flex-col space-y-2">
                 <h2 className='font-bold text-white text-xl'>Home</h2>
