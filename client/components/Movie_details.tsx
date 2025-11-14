@@ -55,10 +55,9 @@ const Movie_details = ({movie_id}: {movie_id: string}) => {
                 <div className="flex flex-col space-y-3">
                     <div className="flex items-center space-x-2 text-gray-400 text-lg">
                         <GoStarFill className=''/>
-                        <p className='capitalized'>Ratings</p>
+                        <p className='capitalized'>Popularity</p>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <span className='uppercase'>Popularity</span>
                         <span className='text-white text-xs'>{movie?.popularity}</span>
                     </div>
                 </div>
