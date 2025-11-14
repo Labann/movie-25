@@ -2,9 +2,7 @@
 import React from 'react'
 import { FaPlay } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
-import { FaPlus } from "react-icons/fa6";
 import Image from 'next/image'
-import { IoIosShareAlt } from "react-icons/io";
 import { IMovie } from '@/app/types/my_types';
 import { getGenreNames } from '@/app/util/destructureGenres';
 import { formatRuntimeSafe } from '@/app/util/timeFormat';
