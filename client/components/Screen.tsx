@@ -27,18 +27,19 @@ const Screen = ({movie_id}: {movie_id: string}) => {
     }, [movie_id, dispatch])
     return (
     <div className='w-full relative pt-34 p-4 min-h-[70vh] bg-cover bg-center' 
-        style={{backgroundImage: `url(${ImgUrl}w700${movie?.poster_path})`}}
+        style={{backgroundImage: `url(${ImgUrl}original${movie?.poster_path})`}}
     >
         <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-5"></div>
+            <div className="h-500px max-w-7xl mx-auto">
+                <ReactPlayer
+                    width={'100%'}
+                    height='100%'
+                    controls
+                    playing
+                    url={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
+                />
+            </div>
             
-            <ReactPlayer
-                width={'100%'}
-                height='100%'
-                controls={true}
-                playing={true}
-                url={`https://www.youtube.com/watch?v=${movie_on_view[0]?.key}`}
-                className="max-w-7xl mx-auto"
-        />
         
     </div>
   )
