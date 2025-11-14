@@ -30,7 +30,7 @@ const Screen = ({movie_id}: {movie_id: string}) => {
         style={{backgroundImage: `url(${ImgUrl}original${movie?.poster_path})`}}
     >
         <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-5"></div>
-            <div className="h-500px max-w-7xl mx-auto">
+            <div className="h-500px max-w-xl mx-auto">
                 <ReactPlayer
                     width={'100%'}
                     height='100%'
