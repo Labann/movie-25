@@ -30,17 +30,8 @@ const Navbar = () => {
   return (
     <div ref={navRef}  className={`${currentUser? `bg-primary`: `bg-default/60`} z-50 md:px-6 pr-2 fixed top-0 left-0 w-full flex flex-col`}>
         <div className={`flex items-center justify-between w-full`}>
-          <div className='flex space-x-2 items-center'>
-              {
-              isOpen? <IoMdMenu 
-                      onClick={() => setIsOpen(!isOpen)} 
-                      size={"1.5em"}
-                      className='md:hidden cursor-pointer text-gray-light'/>
-                      :<IoMdClose 
-                        size={"1.5em"}
-                      onClick={() => setIsOpen(!isOpen)} 
-                      className='md:hidden cursor-pointer text-gray-light'/>
-            }
+          
+              
             <Link href={"/"} className="">
                 <Image
                     src={"/logo_.png"}
@@ -49,7 +40,7 @@ const Navbar = () => {
                     height={150}
                 />
             </Link>
-          </div>
+          
           
           {
             
@@ -58,11 +49,11 @@ const Navbar = () => {
                   <CiHome size={"1.2em"}/>
                   <span>Home</span>
                 </Link>
-                <Link href={"/search"} className="flex md:hidden space-x-2 items-center justify-between text-white focus:text-gray-semibold hover:text-gray-semibold">
+                <Link href={"/search"} className="md:flex hidden space-x-2 items-center justify-between text-white focus:text-gray-semibold hover:text-gray-semibold">
                   <IoIosSearch size={"1.2em"}/>
                   <span>Search</span>
                 </Link>
-                {currentUser && <Link href={"/watch_list"} className="flex md:hidden space-x-2 items-center text-white focus:text-gray-semibold hover:text-gray-semibold">
+                {currentUser && <Link href={"/watch_list"} className="md:flex hidden space-x-2 items-center text-white focus:text-gray-semibold hover:text-gray-semibold">
                   <FaPlus size={"1.2em"}/>
                   <span>Watchlist</span>
                 </Link>}
@@ -83,24 +74,36 @@ const Navbar = () => {
               </Link>
             )
           }
-          {!currentUser && <Link href={"/login"} className="flex spacex-x-2 items-center">
-              <button className='text-sm bg-gray-semibold hover:bg-gray-light rounded-2xl md:px-12 px-6 py-1 text-white cursor-pointer'>sign in</button>
-          </Link>}
-          {
-            currentUser && <button onClick={() => dispatch(logout())} className='text-sm bg-gray-semibold hover:bg-gray-light rounded-2xl md:px-12 px-6 py-1 text-white cursor-pointer'>logout</button>
-          }
+          <div className='flex items-center space-x-3'>
+            {!currentUser && <Link href={"/login"} className="flex spacex-x-2 items-center">
+                  <button className='text-sm bg-gray-semibold hover:bg-gray-light rounded-2xl md:px-12 px-6 py-1 text-white cursor-pointer'>sign in</button>
+              </Link>}
+              {
+                currentUser && <button onClick={() => dispatch(logout())} className='text-sm bg-gray-semibold hover:bg-gray-light rounded-2xl md:px-12 px-6 py-1 text-white cursor-pointer'>logout</button>
+              }
+            {
+                isOpen? <IoMdClose 
+                        onClick={() => setIsOpen(!isOpen)} 
+                        size={"1.5em"}
+                        className='md:hidden cursor-pointer text-gray-light'/>
+                        :<IoMdMenu 
+                          size={"1.5em"}
+                        onClick={() => setIsOpen(!isOpen)} 
+                        className='md:hidden cursor-pointer text-gray-light'/>
+              }
+          </div>
           
       </div>
-      {isOpen && <div className="flex flex-col w-full space-y-2 text-center md:hidden">
-          <Link href={"/home"}  className="flex space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
+      {isOpen && <div className="flex flex-col w-full space-y-4 text-center md:hidden p-4">
+          <Link href={"/home"} onClick={() => setIsOpen(!isOpen)}  className="flex space-x-2 items-center text-white focus:text-gray-semibold hover:text-gray-semibold">
                   <CiHome size={"1.2em"}/>
                   <span>Home</span>
           </Link>
-          <Link href={"/search"} className="md:flex hidden space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
+          <Link href={"/search"} onClick={() => setIsOpen(!isOpen)}  className="flex md:hidden space-x-2 items-center text-white focus:text-gray-semibold hover:text-gray-semibold">
                   <IoIosSearch size={"1.2em"}/>
                   <span>Search</span>
                 </Link>
-          {currentUser && <Link href={"/watch_list"} className="md:flex hidden space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
+          {currentUser && <Link onClick={() => setIsOpen(!isOpen)}  href={"/watch_list"} className="flex md:hidden space-x-2  text-white items-center  focus:text-gray-semibold hover:text-gray-semibold">
             <FaPlus size={"1.2em"}/>
             <span>Watchlist</span>
           </Link>}

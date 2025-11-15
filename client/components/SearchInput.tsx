@@ -19,7 +19,7 @@ const SearchInput = () => {
   return (
     <div className="text-white max-w-7xl mx-auto">
         <div className="flex flex-col space-y-2 justify-center items-center">
-          <div className="relative sm:w-lg w-sm">
+          <div className="relative max-w-lg flex w-full">
             <input type="text" onChange={(e) => setQuery(e.target.value)} name='query' value={query} placeholder='Search' className='w-full pl-8 relative rounded-md p-4 bg-gray-extrabold'/>
             <IoSearchSharp size={"1.2em"} className='absolute top-5 left-2 cursor-pointer'/>
             <IoCloseCircleOutline onClick={() => setQuery("")} size={"1.2em"} className='absolute right-2 top-5 cursor-pointer'/>
