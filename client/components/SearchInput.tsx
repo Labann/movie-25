@@ -1,5 +1,5 @@
 "use client"
-import { useAppDispatch } from '@/app/hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { search_fn } from '@/app/store/movieSlice';
 import React, { useEffect, useState } from 'react'
 import { IoSearchSharp } from "react-icons/io5";
@@ -15,15 +15,19 @@ const SearchInput = () => {
       clearTimeout(delay)
     }
   }, [dispatch, query])
+  const {search_results} = useAppSelector(state => state.movie);
   return (
-    <div className="text-white max-w-7xl mx-auto flex flex-col space-y-2 justify-center items-center">
-        <div className="relative sm:w-lg w-sm">
+    <div className="text-white max-w-7xl mx-auto">
+        <div className="flex flex-col space-y-2 justify-center items-center">
+          <div className="relative sm:w-lg w-sm">
             <input type="text" onChange={(e) => setQuery(e.target.value)} name='query' value={query} placeholder='Search' className='w-full pl-8 relative rounded-md p-4 bg-gray-extrabold'/>
             <IoSearchSharp size={"1.2em"} className='absolute top-5 left-2 cursor-pointer'/>
             <IoCloseCircleOutline onClick={() => setQuery("")} size={"1.2em"} className='absolute right-2 top-5 cursor-pointer'/>
+          </div>
         </div>
         {query && <p className='font-bold text-gray-light'>search results for {query}</p>}
-      </div>
+        {query && search_results.length === 0 && <p className='font-semibold text-gray-light text-lg col-span-10'>no results found</p>}
+    </div>
   )
 }
 
