@@ -17,7 +17,7 @@ const Review = ({review}: {review: IReview}) => {
             
         </div>
         <div className="max-h-[10em] w-full overflow-y-scroll scroll-none border-x border-gray-light">
-            <p className='p-1 text-gray-300 text-sm'>
+            <p className='p-3 text-gray-300 text-sm'>
                 {review.content}
             </p>
         </div>
