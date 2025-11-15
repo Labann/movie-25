@@ -33,7 +33,7 @@ const Movie_details = ({movie_id}: {movie_id: string}) => {
                         <p className='capitalized'>Available languages</p>
                     </div>
                     <div className="flex items-center space-x-2 text-white">
-                        {<span className='bg-black rounded-md p-1 cursor-pointer text-sm'>{movie?.original_language}</span>} 
+                        {<span className='bg-black rounded-md px-3 py-1 cursor-pointer text-sm'>{movie?.original_language}</span>} 
                     </div>
                 </div>
                 <div className="flex flex-col space-y-3">
@@ -42,7 +42,7 @@ const Movie_details = ({movie_id}: {movie_id: string}) => {
                         <p className='capitalized'>Genres</p>
                     </div>
                     <div className="flex items-center flex-wrap space-y-2 space-x-2 text-white">
-                        {movie?.genres?.map(genre => <span key={genre.id} className='bg-black text-sm rounded-md p-1 cursor-pointer'>{genre.name}</span>)}
+                        {movie?.genres?.map(genre => <span key={genre.id} className='bg-black text-sm rounded-md px-3 py-1 cursor-pointer'>{genre.name}</span>)}
                     </div>
                 </div>
                 <div className="flex flex-col space-y-3">
