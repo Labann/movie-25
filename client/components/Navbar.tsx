@@ -22,7 +22,7 @@ const Navbar = () => {
         </Link>
         {
           
-            <div className="flex items-center mx-auto md:space-x-6 text-sm space-x-2 text-lg text-white">
+            <div className="flex items-center mx-auto md:space-x-6 text-sm space-x-2 text-white">
               <Link href={"/home"}  className="flex space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
                 <CiHome size={"1.2em"}/>
                 <span>Home</span>
