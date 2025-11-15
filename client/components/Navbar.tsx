@@ -30,22 +30,25 @@ const Navbar = () => {
   return (
     <div ref={navRef}  className={`${currentUser? `bg-primary`: `bg-default/60`} z-50 md:px-6 pr-2 fixed top-0 left-0 w-full flex flex-col`}>
         <div className={`flex items-center justify-between w-full`}>
-          {
-            isOpen? <IoMdMenu 
-                    onClick={() => setIsOpen(!isOpen)} 
-                    className='md:hidden cursor-pointer'/>
-                    :<IoMdClose 
-                    onClick={() => setIsOpen(!isOpen)} 
-                    className='md:hidden cursor-pointer'/>
-          }
-          <Link href={"/"} className="">
-              <Image
-                  src={"/logo_.png"}
-                  alt='logo'
-                  width={150}
-                  height={150}
-              />
-          </Link>
+          <>
+              {
+              isOpen? <IoMdMenu 
+                      onClick={() => setIsOpen(!isOpen)} 
+                      className='md:hidden cursor-pointer text-gray-light'/>
+                      :<IoMdClose 
+                      onClick={() => setIsOpen(!isOpen)} 
+                      className='md:hidden cursor-pointer text-gray-light'/>
+            }
+            <Link href={"/"} className="">
+                <Image
+                    src={"/logo_.png"}
+                    alt='logo'
+                    width={150}
+                    height={150}
+                />
+            </Link>
+          </>
+          
           {
             
               <div className="md:flex hidden items-center mx-auto md:space-x-6 text-sm space-x-2 text-white">
