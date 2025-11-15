@@ -18,7 +18,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
                     height={300}
                     src={`${ImgUrl}w780${movie.poster_path}`}
                     unoptimized
-                    className='w-full object-fit rounded-md hover:scale-105 h-[10em] object-contain'
+                    className='w-full object-fit rounded-md hover:scale-105 h-[10em] object-cover'
                 />}
         </div>
         
