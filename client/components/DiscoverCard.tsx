@@ -22,7 +22,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
                 />}
         </div>
         
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-6 py-4">
         <h1 className='capitalize text-lg text-gray-light'>{movie.title}</h1>
         <div className="flex space-x-2 font-bold items-center text-xs">
             <button className='border-white border p-1 cursor-pointer'>{movie?.adult? "PG-18": "PG-13"}</button>
