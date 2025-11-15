@@ -30,12 +30,14 @@ const Navbar = () => {
   return (
     <div ref={navRef}  className={`${currentUser? `bg-primary`: `bg-default/60`} z-50 md:px-6 pr-2 fixed top-0 left-0 w-full flex flex-col`}>
         <div className={`flex items-center justify-between w-full`}>
-          <>
+          <div className='flex space-x-2 items-center'>
               {
               isOpen? <IoMdMenu 
                       onClick={() => setIsOpen(!isOpen)} 
+                      size={"1.5em"}
                       className='md:hidden cursor-pointer text-gray-light'/>
                       :<IoMdClose 
+                        size={"1.5em"}
                       onClick={() => setIsOpen(!isOpen)} 
                       className='md:hidden cursor-pointer text-gray-light'/>
             }
@@ -47,7 +49,7 @@ const Navbar = () => {
                     height={150}
                 />
             </Link>
-          </>
+          </div>
           
           {
             
@@ -89,7 +91,7 @@ const Navbar = () => {
           }
           
       </div>
-      <div className="flex flex-col w-full space-y-2 text-center md:hidden">
+      {isOpen && <div className="flex flex-col w-full space-y-2 text-center md:hidden">
           <Link href={"/home"}  className="flex space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
                   <CiHome size={"1.2em"}/>
                   <span>Home</span>
@@ -102,7 +104,7 @@ const Navbar = () => {
             <FaPlus size={"1.2em"}/>
             <span>Watchlist</span>
           </Link>}
-      </div>
+      </div>}
     </div>
     
   )
