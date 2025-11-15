@@ -15,7 +15,7 @@ const SearchInput = () => {
       clearTimeout(delay)
     }
   }, [dispatch, query])
-  const {search_results} = useAppSelector(state => state.movie);
+  const {search_results, isLoading} = useAppSelector(state => state.movie);
   return (
     <div className="text-white max-w-7xl mx-auto">
         <div className="flex flex-col space-y-2 justify-center items-center">
@@ -25,8 +25,8 @@ const SearchInput = () => {
             <IoCloseCircleOutline onClick={() => setQuery("")} size={"1.2em"} className='absolute right-2 top-5 cursor-pointer'/>
           </div>
         </div>
-        {query && <p className='font-bold text-gray-light'>search results for {query}</p>}
-        {query && search_results.length === 0 && <p className='font-semibold text-gray-light text-lg col-span-10'>no results found</p>}
+        {query && <p className='font-bold text-gray-light py-4'>search results for {query}</p>}
+        {query && !isLoading && search_results.length === 0 && <p className='font-semibold text-gray-light text-lg col-span-10'>no results found</p>}
     </div>
   )
 }
