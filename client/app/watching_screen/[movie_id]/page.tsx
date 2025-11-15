@@ -7,6 +7,7 @@ import Reviews from '@/components/Reviews';
 import { useParams } from 'next/navigation';
 import { useAppDispatch } from '@/app/hooks/redux';
 import { fetchMovieCast } from '@/app/store/movieSlice';
+import SlideShow from '@/components/SlideShow';
 const Watching_screen = () => {
   const {movie_id} = useParams<{movie_id: string}>();
   const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ const Watching_screen = () => {
         <Movie_details movie_id={movie_id}/>
         <Actors title='Top Cast'/>
         <Reviews movie_id={movie_id}/>
+        <SlideShow title='Recommended For you' movie_id={parseInt(movie_id)}/>
     </div>
   )
 }
