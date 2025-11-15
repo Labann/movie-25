@@ -53,16 +53,16 @@ const Navbar = () => {
           
           {
             
-              <div className="md:flex hidden items-center mx-auto md:space-x-6 text-sm space-x-2 text-white">
-                <Link href={"/home"}  className="flex space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
+              <div className="md:flex hidden items-center mx-auto md:space-x-6 text-sm space-x-2">
+                <Link href={"/home"}  className="flex space-x-2 items-center justify-between text-white focus:text-gray-semibold hover:text-gray-semibold">
                   <CiHome size={"1.2em"}/>
                   <span>Home</span>
                 </Link>
-                <Link href={"/search"} className="md:flex hidden space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
+                <Link href={"/search"} className="flex md:hidden space-x-2 items-center justify-between text-white focus:text-gray-semibold hover:text-gray-semibold">
                   <IoIosSearch size={"1.2em"}/>
                   <span>Search</span>
                 </Link>
-                {currentUser && <Link href={"/watch_list"} className="md:flex hidden space-x-2 items-center  focus:text-gray-semibold hover:text-gray-semibold">
+                {currentUser && <Link href={"/watch_list"} className="flex md:hidden space-x-2 items-center text-white focus:text-gray-semibold hover:text-gray-semibold">
                   <FaPlus size={"1.2em"}/>
                   <span>Watchlist</span>
                 </Link>}
