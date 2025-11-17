@@ -17,11 +17,15 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
                     <p className="text-lg text-white">no image</p>
                 </div>
             }
-            {movie?.poster_path && <Image
+            {(movie?.poster_path || movie?.backdrop_path) && <Image
                     alt="discover-card"
                     width={300}
                     height={300}
-                    src={`${ImgUrl}w780${movie?.poster_path}`}
+                    src={
+                        `${ImgUrl}w780${movie?.poster_path}` 
+                        || 
+                        `${ImgUrl}w780${movie?.backdrop_path}`
+                    }
                     unoptimized
                     className='w-full object-fit rounded-md hover:scale-105 h-[10em] object-cover'
                 />}
