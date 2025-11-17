@@ -103,7 +103,7 @@ const Navbar = () => {
                   <IoIosSearch size={"1.2em"}/>
                   <span>Search</span>
                 </Link>
-          {currentUser && <Link onClick={() => setIsOpen(!isOpen)}  href={"/watch_list"} className="flex md:hidden space-x-2  text-white items-center  focus:text-gray-semibold hover:text-gray-semibold">
+          {currentUser && <Link onClick={() => setIsOpen(!isOpen)}  href={"/watch_list"} className="space-x-2 hidden text-white items-center  focus:text-gray-semibold hover:text-gray-semibold">
             <FaPlus size={"1.2em"}/>
             <span>Watchlist</span>
           </Link>}
