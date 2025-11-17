@@ -34,7 +34,7 @@ const Footer = () => {
                 </ul>
             </div>
         </div>
-        <div className="max-w-7xl mx-auto text-center text-gray-light text-lg p-4">Made with ❤ Magotsi</div>
+        <div className="max-w-7xl mx-auto text-center text-gray-light text-sm lowercase p-4">Made with ❤ Magotsi</div>
     </div>
     
   )
