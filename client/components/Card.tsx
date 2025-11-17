@@ -7,8 +7,17 @@ import { ImgUrl } from '@/app/util/config';
 const Card = ({movie}: {movie: IMovie}) => {
   return (
     <Link href={`/watching_screen/${movie.id}`} className='w-[17em] overflow-hidden'>
-        {movie.backdrop_path && <Image 
-            src={`${ImgUrl}w780${movie?.poster_path}`}
+        {
+          (!movie?.poster_path || !movie?.backdrop_path) && <div className="rounded-md h-[12em] w-full flex justify-center items-center">
+            <p className="text-white font-bold text-white">no image</p>
+          </div>
+        }
+        {(movie?.poster_path || movie?.backdrop_path) && <Image 
+            src={
+                `${ImgUrl}w780${movie?.poster_path}` 
+                || 
+                `${ImgUrl}w780${movie?.backdrop_path}`
+              }
             alt='card-img'
             width={200}
             height={200}

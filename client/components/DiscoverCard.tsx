@@ -11,32 +11,37 @@ import Link from 'next/link';
 const DiscoverCard = ({movie}: {movie: IMovie}) => {
   return (
     <div className='rounded-md p-2 max-w-xl bg-gray-neutral overflow-hidden'>
-        <div className="overflow-hidden">
-            {movie.poster_path && <Image
+        <div> 
+            {
+                !movie.poster_path && <div className="h-[10em] w-fit bg-gray-light rounded-md flex justify-center items-center">
+                    <p className="text-lg text-white">no image</p>
+                </div>
+            }
+            {movie?.poster_path && <Image
                     alt="discover-card"
                     width={300}
                     height={300}
-                    src={`${ImgUrl}w780${movie.poster_path}`}
+                    src={`${ImgUrl}w780${movie?.poster_path}`}
                     unoptimized
                     className='w-full object-fit rounded-md hover:scale-105 h-[10em] object-cover'
                 />}
         </div>
         
         <div className="flex flex-col space-y-6 py-4">
-        <h1 className='capitalize text-lg text-gray-light'>{movie.title}</h1>
+        <h1 className='capitalize text-lg text-gray-light'>{movie?.title}</h1>
         <div className="flex space-x-2 font-bold items-center text-xs">
             <button className='border-white border p-1 cursor-pointer'>{movie?.adult? "PG-18": "PG-13"}</button>
-            <p>{movie.createdAt}</p>
+            <p>{movie?.createdAt}</p>
             <GoDotFill/>
-            <p>{getGenreNames(movie.genre_ids)}</p>
+            <p>{getGenreNames(movie?.genre_ids)}</p>
             <GoDotFill/>
-            <p>{formatRuntimeSafe(movie.runtime)}</p>
+            <p>{formatRuntimeSafe(movie?.runtime)}</p>
         </div>
         <div className="overflow-y-scroll max-h-[10em] scroll-none">
-            <p className='text-gray-300 text-md'>{movie.overview}</p>
+            <p className='text-gray-300 text-md'>{movie?.overview}</p>
         </div>
         <div className="pt-4 flex space-x-3 items-center">
-            <Link href={`/watching_screen/${movie.id}`} className='bg-gray-neutral border-gray-semibold border hover:bg-gray-light cursor-pointer flex text-sm items-center px-6 py-2 space-x-2 rounded-2xl capitalize text-white'>
+            <Link href={`/watching_screen/${movie?.id}`} className='bg-gray-neutral border-gray-semibold border hover:bg-gray-light cursor-pointer flex text-sm items-center px-6 py-2 space-x-2 rounded-2xl capitalize text-white'>
                 <FaPlay />
                 <p>Play Now</p>
             </Link>
@@ -48,7 +53,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
 
 export const DiscoverCardLoader = () => {
     return (
-        <div className='bg-gray-neutral rounded-md max-w-xl p-3 min-w-xs'>
+        <div className='bg-gray-neutral rounded-md max-w-xl p-3 sm:min-w-xs md:min-w-sm xl:min-w-g'>
             <div className="h-[10em] bg-gray-light animate-pulse w-full rounded-md"></div>
             <div className="flex flex-col space-y-3 py-3 h-[10em]">
                 <div className="h-3 w-1/4 animate-pulse rounded-md bg-gray-light"></div>

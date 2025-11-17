@@ -7,7 +7,7 @@ import { FiEyeOff } from "react-icons/fi";
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { useAppDispatch } from '@/app/hooks/redux';
-import { login_v2, loginV1 } from '@/app/store/authSlice';
+import { getMe, login_v2, loginV1 } from '@/app/store/authSlice';
 import { toast } from 'react-toastify';
 import { SpinnerCustom } from '@/components/ui/spinner';
 import { useRouter } from 'next/navigation';
@@ -32,7 +32,7 @@ const Login = () => {
         toast.error(action.payload as string)
       }
       if(action.type === "/auth/v1/login/fulfilled"){
-        
+        dispatch(getMe())
         toast.success("logged in successfully")
         router.push("/home")
       }

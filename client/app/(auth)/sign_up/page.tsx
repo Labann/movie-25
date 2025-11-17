@@ -7,7 +7,7 @@ import { FiEyeOff } from "react-icons/fi";
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { useAppDispatch } from '@/app/hooks/redux';
-import { login_v2, sign_upV1 } from '@/app/store/authSlice';
+import { getMe, login_v2, sign_upV1 } from '@/app/store/authSlice';
 import { toast } from 'react-toastify';
 import { SpinnerCustom } from '@/components/ui/spinner';
 import { useRouter } from 'next/navigation';
@@ -32,6 +32,7 @@ const Sign_up = () => {
           toast.error(String(action.payload))
         }
         if(action.type === "/auth/v1/sign_up/fulfilled"){
+          dispatch(getMe())
           toast.success("user created successfully")
           router.push("/home")
         }
