@@ -13,7 +13,7 @@ const DiscoverCard = ({movie}: {movie: IMovie}) => {
     <div className='rounded-md p-2 max-w-xl bg-gray-neutral overflow-hidden'>
         <div> 
             {
-                (!movie.poster_path && !movie?.backdrop_path) && <div className="h-[10em] w-full bg-gray-light rounded-md flex justify-center items-center">
+                (!movie.poster_path && !movie?.backdrop_path) && <div className="h-[10em] w-full bg-black rounded-md flex justify-center items-center">
                     <p className="text-lg text-white">no image</p>
                 </div>
             }

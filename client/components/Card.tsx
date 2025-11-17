@@ -8,7 +8,7 @@ const Card = ({movie}: {movie: IMovie}) => {
   return (
     <Link href={`/watching_screen/${movie.id}`} className='w-[17em] overflow-hidden'>
         {
-          (!movie?.poster_path && !movie?.backdrop_path) && <div className="rounded-md h-[12em] bg-gray-light w-full flex justify-center items-center">
+          (!movie?.poster_path && !movie?.backdrop_path) && <div className="rounded-md h-[12em] bg-black w-full flex justify-center items-center">
             <p className="text-white font-bold text-white">no image</p>
           </div>
         }
