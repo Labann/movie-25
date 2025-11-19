@@ -96,8 +96,7 @@ export const login: express.RequestHandler = async (req, res) => {
 
 export const logout: express.RequestHandler = async (req, res) => {
     try {
-        res.cookie("token", "", {
-            maxAge: 0,
+        res.clearCookie("token", {
             httpOnly: true, //prevents access from js
             secure: process.env.NODE_ENV === "development", //allows it to be accessed over https only
             sameSite: "none"
