@@ -35,7 +35,7 @@ const Footer = () => {
                 </ul>
             </div>
         </div>
-        <div className="max-w-7xl mx-auto text-center text-gray-light text-sm lowercase p-4">Made with <span className="text-accent">❤</span> <Link href="https://magotsi.vercel.app" className="hover:text-accent">Magotsi</Link></div>
+        <div className="max-w-7xl mx-auto text-center text-gray-light text-sm lowercase p-4">Made with <span className="text-accent">❤</span> <Link href="https://magotsi.vercel.app" className="hover:font-bold">Magotsi</Link></div>
     </div>
     
   )
