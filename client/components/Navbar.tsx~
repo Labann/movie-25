@@ -62,7 +62,7 @@ const Navbar = () => {
           }
           {
             currentUser && (
-              <Link href={"/profile"} className="flex space-x-1 text-white items-center">
+              <Link href={"/profile"} className="space-x-1 hidden text-white items-center">
                 <span>My Profile</span>
                 <Image
                   src={"/avatar.png"}
